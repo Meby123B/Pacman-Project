@@ -1,4 +1,6 @@
 package Elements;
 
-public class Collectable {
+public abstract class Collectable {
+    int value;
+
 }

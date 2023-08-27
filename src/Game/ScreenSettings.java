@@ -7,7 +7,7 @@ public class ScreenSettings {
     final int maxScreenCol = 28;
     final int maxScreenRow = 32;
 
-    final int width = tileSize * maxScreenCol;
-    final int height = tileSize * maxScreenRow;
+    public final int width = tileSize * maxScreenCol;
+    public final int height = tileSize * maxScreenRow;
 
 }
