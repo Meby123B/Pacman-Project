@@ -37,6 +37,12 @@ public class Player extends Entity {
     public void draw(Graphics2D g2) {
         g2.setColor(Color.WHITE);
         g2.fillRect(x,y,sc.tileSize,sc.tileSize);
-        System.out.println("x:"+x+"|y:"+y);
+//        System.out.println("x:"+x+"|y:"+y);
+    }
+    public boolean checkCollision(Dot dot){
+        return getUp() <= dot.getDown()
+                && getDown() >= dot.getUp()
+                && getLeft() <= dot.getRight()
+                && getRight() >= dot.getLeft();//TODO
     }
 }
