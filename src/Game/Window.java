@@ -1,7 +1,5 @@
 package Game;
 
-import Elements.Player;
-
 import javax.swing.*;
 
 public class Window {

@@ -1,7 +1,7 @@
 package Game;
 
-import Elements.Dot;
-import Elements.Player;
+import GameObject.Dot;
+import GameObject.Player;
 
 import javax.swing.*;
 import java.awt.*;

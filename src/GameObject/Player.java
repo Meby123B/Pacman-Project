@@ -1,10 +1,10 @@
-package Elements;
+package GameObject;
 
 import Game.KeyHandler;
 
 import java.awt.*;
 
-public class Player extends Element implements Movable {
+public class Player extends GameObject implements Movable {
 
     public  Player(){
         x = 100;
@@ -13,20 +13,17 @@ public class Player extends Element implements Movable {
     }
     public void update( KeyHandler keyH) {
         if (keyH.upPressed) {
-            if (getUp() +  speed < 0) {return;} //לא יוצא מהקיר
-            y -= speed;
+            move(MoveSides.UP);
 
         } else if (keyH.downPressed) {
-            if (getDown() + speed > sc.height) {return;}
-            y += speed;
+            move(MoveSides.DOWN);
 
         } else if (keyH.leftPressed) {
-            if (getLeft() + speed < 0) {return;} //לא יוצא מהקיר
-            x -= speed;
+            move(MoveSides.LEFT);
 
         } else if (keyH.rightPressed) {
-            if (getRight() + speed > sc.width) {return;}
-            x += speed;
+            move(MoveSides.RIGHT);
+
         }
     }
     public int getLeft(){ return x;}
@@ -57,12 +54,12 @@ public class Player extends Element implements Movable {
 
     @Override
     public void setY(int newY) {
-        y = newY;
+        this.y = newY;
     }
 
     @Override
     public int getSpeed() {
-        return 0;
+        return speed;
     }
 
     public boolean checkCollision(Dot dot){
@@ -76,6 +73,6 @@ public class Player extends Element implements Movable {
 
     @Override
     public void move(MoveSides dir) {
-        Movment.movement(this, dir);
+        Movement.moveObject(this, dir);
     }
 }

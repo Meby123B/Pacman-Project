@@ -1,4 +1,4 @@
-package Elements;
+package GameObject;
 
 public interface Movable {
 
