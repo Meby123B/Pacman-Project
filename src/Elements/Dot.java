@@ -23,4 +23,30 @@ public class Dot extends Collectable{
         g2.setColor(Color.green);
         g2.fillRect(x,y,sc.tileSize,sc.tileSize);
     }
+
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public void setX(int newX) {
+        x = newX;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void setY(int newY) {
+        y = newY;
+    }
+
+    @Override
+    public int getSpeed() {
+        return 0;
+    }
+
+
 }

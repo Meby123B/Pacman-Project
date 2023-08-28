@@ -4,7 +4,7 @@ import Game.KeyHandler;
 
 import java.awt.*;
 
-public class Player extends Entity {
+public class Player extends Element implements Movable {
 
     public  Player(){
         x = 100;
@@ -39,10 +39,43 @@ public class Player extends Entity {
         g2.fillRect(x,y,sc.tileSize,sc.tileSize);
 //        System.out.println("x:"+x+"|y:"+y);
     }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public void setX(int newX) {
+        x = newX;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public void setY(int newY) {
+        y = newY;
+    }
+
+    @Override
+    public int getSpeed() {
+        return 0;
+    }
+
     public boolean checkCollision(Dot dot){
         return getUp() <= dot.getDown()
                 && getDown() >= dot.getUp()
                 && getLeft() <= dot.getRight()
-                && getRight() >= dot.getLeft();//TODO
+                && getRight() >= dot.getLeft();
+    }
+
+
+
+    @Override
+    public void move(MoveSides dir) {
+        Movment.movement(this, dir);
     }
 }
