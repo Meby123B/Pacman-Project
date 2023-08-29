@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements Runnable{
         Controller.allObjects.add(ghost);
         Controller.allObjects.add(dot);
         Controller.allObjects.add(dot2);
+        Controller.allObjects.add(new Wall());
 
 
 
@@ -43,8 +44,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
         player.update(keyH);
-        Controller.allObjects.forEach(
-                obj -> player.checkCollision(obj));
+
+        Controller.allObjects.forEach(obj ->{
+                if (obj != null){
+                    player.checkCollision(obj);
+                }
+        });
         dot.move(MoveSides.RIGHT);
     }
 
@@ -52,9 +57,14 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        Controller.allObjects.forEach(
-                gameObject -> gameObject.draw(g2));
-
+        Controller.allObjects.forEach(obj ->{
+            if (obj != null){
+                obj.draw(g2);
+            }
+        });
+        Wall.walls.forEach(wall -> {
+            wall.draw(g2);
+        });
 //        player.draw(g2);
 //        dot.draw(g2);
 

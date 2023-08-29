@@ -1,5 +1,7 @@
 package GameObject;
 
+import Game.Controller;
+
 import java.awt.*;
 
 public class Ghost extends GameObject implements  Movable{

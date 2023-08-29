@@ -19,6 +19,12 @@ public class Movement {
     }
 
     private static boolean check(GameObject o, MoveSides dir){
+        for (int i = 0; i < Wall.walls.size(); i++) {
+            if(o.checkCollision(Wall.walls.get(i))){
+                return false;
+            }
+        }
+
         switch (dir){
             case UP -> {return o.getUp() - objSpeed > 0;}
             case DOWN ->{return o.getDown() + objSpeed < ScreenSettings.height;}

@@ -8,15 +8,16 @@ public class Dot extends GameObject implements Collectable, Movable{
     static int score = 0;
     int value;
     public Dot(){
-        x =50;
-        y =50;
+        x =60;
+        y =60;
         color = Color.green;
         value = 100;
     }
     public void playerCollide(){
         score += value;
         System.out.println(score);
-        Controller.allObjects.remove(this);
+        int i = Controller.allObjects.indexOf(this);
+        Controller.allObjects.set(i, null);
     }
 
     @Override
