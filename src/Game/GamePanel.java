@@ -1,6 +1,7 @@
 package Game;
 
 import GameObject.Dot;
+import GameObject.MoveSides;
 import GameObject.Player;
 
 import javax.swing.*;
@@ -11,10 +12,9 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     Player player = new Player();
     Dot dot = new Dot();
-    ScreenSettings screenSettings = new ScreenSettings();
     public GamePanel() {
 
-        this.setPreferredSize(new Dimension(screenSettings.width, screenSettings.height));
+        this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update() {
         player.update(keyH);
         player.checkCollision(dot);
+        dot.move(MoveSides.RIGHT);
     }
 
     public void paintComponent(Graphics g) {

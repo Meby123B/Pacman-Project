@@ -2,51 +2,32 @@ package GameObject;
 
 import java.awt.*;
 
-public class Dot extends Collectable{
+public class Dot extends GameObject implements Collectable, Movable{
     static int score = 0;
+    int value;
     public Dot(){
         x =50;
         y =50;
+        color = Color.green;
         value = 100;
     }
     public void playerColide(){
         score += value;
         System.out.println(score);
     }
-    public int getLeft(){ return x;}
-    public int getRight(){ return x+sc.tileSize;}
-    public int getUp(){ return y;}
-    public int getDown(){ return y+ sc.tileSize;}
 
     @Override
-    public void draw(Graphics2D g2) {
-        g2.setColor(Color.green);
-        g2.fillRect(x,y,sc.tileSize,sc.tileSize);
-    }
-
-    public int getX() {
-        return x;
+    public int getValue() {
+        return value;
     }
 
     @Override
-    public void setX(int newX) {
-        x = newX;
-    }
-
-    @Override
-    public int getY() {
-        return y;
-    }
-
-    @Override
-    public void setY(int newY) {
-        y = newY;
+    public void move(MoveSides dir) {
+        Movement.moveObject(this,dir);
     }
 
     @Override
     public int getSpeed() {
-        return 0;
+        return 1;
     }
-
-
 }
