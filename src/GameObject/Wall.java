@@ -9,11 +9,11 @@ public class Wall extends GameObject{
 
     public static ArrayList<Wall> walls = new ArrayList<>();
 
-    public Wall(){
-        this.x = 0;
-        this.y = 0;
-        this.width = 50;
-        this.height = ScreenSettings.height;
+    public Wall(int x, int y, int w, int h){
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
         this.color = Color.WHITE;
         walls.add(this);
     }

@@ -16,8 +16,7 @@ public class Dot extends GameObject implements Collectable, Movable{
     public void playerCollide(){
         score += value;
         System.out.println(score);
-        int i = Controller.allObjects.indexOf(this);
-        Controller.allObjects.set(i, null);
+        Controller.removeObj(this);
     }
 
     @Override
