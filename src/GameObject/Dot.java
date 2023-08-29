@@ -1,5 +1,7 @@
 package GameObject;
 
+import Game.Controller;
+
 import java.awt.*;
 
 public class Dot extends GameObject implements Collectable, Movable{
@@ -14,6 +16,7 @@ public class Dot extends GameObject implements Collectable, Movable{
     public void playerCollide(){
         score += value;
         System.out.println(score);
+        Controller.allObjects.remove(this);
     }
 
     @Override

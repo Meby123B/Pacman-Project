@@ -1,8 +1,6 @@
 package Game;
 
-import GameObject.Dot;
-import GameObject.MoveSides;
-import GameObject.Player;
+import GameObject.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +9,18 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     Player player = new Player();
+    GameObject ghost = new Ghost();
     Dot dot = new Dot();
+    Dot dot2 = new Dot();
+
+
     public GamePanel() {
+        Controller.allObjects.add(player);
+        Controller.allObjects.add(ghost);
+        Controller.allObjects.add(dot);
+        Controller.allObjects.add(dot2);
+
+
 
         this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height));
         this.setBackground(Color.black);
@@ -35,7 +43,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
         player.update(keyH);
-        player.checkCollision(dot);
+        Controller.allObjects.forEach(
+                obj -> player.checkCollision(obj));
         dot.move(MoveSides.RIGHT);
     }
 
@@ -43,8 +52,11 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        player.draw(g2);
-        dot.draw(g2);
+        Controller.allObjects.forEach(
+                gameObject -> gameObject.draw(g2));
+
+//        player.draw(g2);
+//        dot.draw(g2);
 
         g2.dispose();
     }
