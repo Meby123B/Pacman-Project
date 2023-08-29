@@ -5,17 +5,18 @@ import Game.ScreenSettings;
 import java.awt.*;
 
 public abstract class GameObject {
+    int tileSize = ScreenSettings.tileSize;
     int x,y;
     Color color;
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
-        g2.fillRect(x,y,ScreenSettings.tileSize,ScreenSettings.tileSize);
+        g2.fillRect(x,y,tileSize,tileSize);
     }
     public int getLeft(){ return x;}
-    public int getRight(){ return x+ScreenSettings.tileSize;}
+    public int getRight(){ return x+tileSize;}
     public int getUp(){ return y;}
-    public int getDown(){ return y+ ScreenSettings.tileSize;}
+    public int getDown(){ return y+ tileSize;}
 
     public int getX() {
         return x;
@@ -29,13 +30,20 @@ public abstract class GameObject {
     public void setY(int newY) {
         this.y = newY;
     }
+    public void getColor(Color newColor){ color = newColor;}
+    public Color getColor(){return color;}
+    public abstract void playerCollide();
 
 
-    public boolean checkCollision(Dot dot){
-        return getUp() <= dot.getDown()
-                && getDown() >= dot.getUp()
-                && getLeft() <= dot.getRight()
-                && getRight() >= dot.getLeft();
+
+    public void checkCollision(GameObject other){
+        if (getUp() <= other.getDown()
+                && getDown() >= other.getUp()
+                && getLeft() <= other.getRight()
+                && getRight() >= other.getLeft()
+        ){
+            other.playerCollide();
+        }
     }
 
 

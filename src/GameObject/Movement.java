@@ -20,10 +20,10 @@ public class Movement {
 
     private static boolean check(GameObject o, MoveSides dir){
         switch (dir){
-            case UP -> {return o.getUp() + objSpeed > 0;}
+            case UP -> {return o.getUp() - objSpeed > 0;}
             case DOWN ->{return o.getDown() + objSpeed < ScreenSettings.height;}
-            case LEFT -> {return o.getLeft() + objSpeed > 0;}
-            case RIGHT -> {return o.getUp() + objSpeed < ScreenSettings.width;}
+            case LEFT -> {return o.getLeft() - objSpeed > 0;}
+            case RIGHT -> {return o.getRight() + objSpeed < ScreenSettings.width;}
         }
         return false;
     }

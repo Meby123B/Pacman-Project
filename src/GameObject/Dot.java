@@ -11,7 +11,7 @@ public class Dot extends GameObject implements Collectable, Movable{
         color = Color.green;
         value = 100;
     }
-    public void playerColide(){
+    public void playerCollide(){
         score += value;
         System.out.println(score);
     }

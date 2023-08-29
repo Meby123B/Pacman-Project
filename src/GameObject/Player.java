@@ -33,5 +33,9 @@ public class Player extends GameObject implements Movable {
     @Override
     public void move(MoveSides dir) {
         Movement.moveObject(this, dir);
+//        System.out.println("x:"+x+" y:"+y);
     }
+
+    @Override
+    public void playerCollide() {    }
 }
