@@ -1,7 +1,5 @@
 package GameObject;
 
-import Game.ScreenSettings;
-
 import java.awt.*;
 import java.util.ArrayList;
 

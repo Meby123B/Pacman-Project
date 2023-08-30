@@ -7,7 +7,7 @@ import java.awt.*;
 public class Ghost extends GameObject implements  Movable{
 
     public Ghost(){
-        x =200;
+        x =400;
         y =200;
         color = Color.blue;
     }

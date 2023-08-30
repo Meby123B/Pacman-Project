@@ -52,7 +52,6 @@ public class Movement {
         obj.setX(obj.getX() - objSpeed);
 
         if (check(obj,MoveSides.LEFT)) {
-            System.out.println("happen");
             obj.setX(obj.getX() + objSpeed);
         }
     }
