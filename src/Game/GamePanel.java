@@ -20,7 +20,8 @@ public class GamePanel extends JPanel implements Runnable{
         Controller.allObjects.add(dot);
         Controller.allObjects.add(dot2);
         Controller.allObjects.add(new Wall(0,0, 20, ScreenSettings.height));
-        Controller.allObjects.add(new Wall(70,70, 20, ScreenSettings.height));
+        Controller.allObjects.add(new Wall(ScreenSettings.width-20,0, 20, ScreenSettings.height));
+        Controller.allObjects.add(new Wall(200,170, 20, ScreenSettings.height));
 
 
 
