@@ -1,23 +1,27 @@
 package GameObject;
 
 import Game.Controller;
+import Game.ScreenSettings;
 
 import java.awt.*;
 
-public class Dot extends GameObject implements Collectable, Movable{
+public class Dot extends GameObject implements Collectable{
     static int score = 0;
     int value;
-    public Dot(){
-        x =60;
-        y =60;
+    public Dot(int x, int y){
+        int tileSize = ScreenSettings.tileSize;
+
+        this.x = x + tileSize/4;
+        this.y = y + tileSize/4;
+        this.width = tileSize / 2;
+        this.height = tileSize / 2;
         color = Color.green;
         value = 100;
     }
     public void playerCollide(){
-        score += value;
-        System.out.println(score);
-        Controller.removeObj(this);
+        collect();
     }
+
 
     @Override
     public int getValue() {
@@ -25,12 +29,10 @@ public class Dot extends GameObject implements Collectable, Movable{
     }
 
     @Override
-    public void move(MoveSides dir) {
-        Movement.moveObject(this,dir);
+    public void collect() {
+        score += value;
+        System.out.println(score);
+        Controller.removeObj(this);
     }
 
-    @Override
-    public int getSpeed() {
-        return 1;
-    }
 }

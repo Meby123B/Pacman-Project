@@ -1,38 +1,46 @@
 package GameObject;
 
 import Game.KeyHandler;
+import Game.ScreenSettings;
 
 import java.awt.*;
 
 public class Player extends GameObject implements Movable {
     int speed = 4;
+    MoveSides direction=null;
+
     static Player instance;
     public static Player getInstance(){
 
         if (instance == null){
             Player p = new Player();
-            p.x = 100;
-            p.y = 100;
+            p.y = 2*ScreenSettings.tileSize;
+            p.x = 12*ScreenSettings.tileSize;
             p.color = Color.ORANGE;
-
 
             instance = p;
             return p;
         }
         return instance;
     }
-
-
-    public void moveByKeys() {
+    public void checkKeys() {
         if (KeyHandler.upPressed) {
-            move(MoveSides.UP);
+            changeDirection(MoveSides.UP);
+
         } else if (KeyHandler.downPressed) {
-            move(MoveSides.DOWN);
+            changeDirection(MoveSides.DOWN);
+
         } else if (KeyHandler.leftPressed) {
-            move(MoveSides.LEFT);
+            changeDirection(MoveSides.LEFT);
+
         } else if (KeyHandler.rightPressed) {
-            move(MoveSides.RIGHT);
+            changeDirection(MoveSides.RIGHT);
         }
+    }
+    public void update() {
+//        System.out.println(direction);
+        checkKeys();
+        move(direction);
     }
 
     @Override
@@ -43,9 +51,22 @@ public class Player extends GameObject implements Movable {
     @Override
     public void move(MoveSides dir) {
         Movement.moveObject(this, dir);
-//        System.out.println("x:"+x+" y:"+y);
+        System.out.println("x:"+x+" y:"+y);
+    }
+
+    @Override
+    public void changeDirection(MoveSides dir) {
+        Movement.changeDirection(this, dir);
     }
 
     @Override
     public void playerCollide() {    }
+        @Override
+    public MoveSides getDirection() {
+        return direction;
+    }
+    @Override
+    public void setDirection(MoveSides dir) {
+        this.direction = dir;
+    }
 }

@@ -1,7 +1,5 @@
 package GameObject;
 
-import Game.ScreenSettings;
-
 import java.awt.*;
 
 import static Game.ScreenSettings.tileSize;
@@ -17,9 +15,9 @@ public abstract class GameObject {
         g2.fillRect(x,y,width,height);
     }
     public int getLeft(){ return x;}
-    public int getRight(){ return x+width;}
+    public int getRight(){ return x+width-1;}
     public int getUp(){ return y;}
-    public int getDown(){ return y+ height;}
+    public int getDown(){ return y+ height-1;}
 
     public int getX() {
         return x;
@@ -43,7 +41,7 @@ public abstract class GameObject {
         if (getUp() <= other.getDown()
                 && getDown() >= other.getUp()
                 && getLeft() <= other.getRight()
-                && getRight() >= other.getLeft()
+                && getRight()-2 >= other.getLeft()
         ){
             other.playerCollide();
             return true;
