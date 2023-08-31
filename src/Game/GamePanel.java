@@ -8,22 +8,10 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
-    Player player = new Player();
-    GameObject ghost = new Ghost();
-    Dot dot = new Dot();
-    Dot dot2 = new Dot();
 
 
     public GamePanel() {
-        Controller.allObjects.add(player);
-        Controller.allObjects.add(ghost);
-        Controller.allObjects.add(dot);
-        Controller.allObjects.add(dot2);
-        Controller.allObjects.add(new Wall(0,0, 20, ScreenSettings.height));
-        Controller.allObjects.add(new Wall(ScreenSettings.width-20,0, 20, ScreenSettings.height));
-        Controller.allObjects.add(new Wall(200,170, 20, ScreenSettings.height));
-
-
+        Generator.generateAll();
 
         this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height));
         this.setBackground(Color.black);
@@ -45,10 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update() {
-        player.update(keyH);
-
-        Controller.updateAll(player);
-        dot.move(MoveSides.RIGHT);
+        Controller.updateAll();
     }
 
     public void paintComponent(Graphics g) {

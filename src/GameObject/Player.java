@@ -1,26 +1,36 @@
 package GameObject;
 
 import Game.KeyHandler;
-import Game.ScreenSettings;
 
 import java.awt.*;
 
 public class Player extends GameObject implements Movable {
     int speed = 4;
+    static Player instance;
+    public static Player getInstance(){
 
-    public  Player(){
-        x = 100;
-        y = 100;
-        color = Color.ORANGE;
+        if (instance == null){
+            Player p = new Player();
+            p.x = 100;
+            p.y = 100;
+            p.color = Color.ORANGE;
+
+
+            instance = p;
+            return p;
+        }
+        return instance;
     }
-    public void update( KeyHandler keyH) {
-        if (keyH.upPressed) {
+
+
+    public void moveByKeys() {
+        if (KeyHandler.upPressed) {
             move(MoveSides.UP);
-        } else if (keyH.downPressed) {
+        } else if (KeyHandler.downPressed) {
             move(MoveSides.DOWN);
-        } else if (keyH.leftPressed) {
+        } else if (KeyHandler.leftPressed) {
             move(MoveSides.LEFT);
-        } else if (keyH.rightPressed) {
+        } else if (KeyHandler.rightPressed) {
             move(MoveSides.RIGHT);
         }
     }

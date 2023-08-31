@@ -21,25 +21,4 @@ public class Wall extends GameObject{
         System.out.println("DON'T TOUCH ME!");
     }
 
-//    @Override
-//    public int getLeft() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getRight() {
-//        return 50;
-//    }
-//
-//    @Override
-//    public int getUp() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getDown() {
-//        return ScreenSettings.height;
-//    }
-
-
 }
