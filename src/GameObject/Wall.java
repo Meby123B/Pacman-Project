@@ -12,7 +12,7 @@ public class Wall extends GameObject{
         this.y = y;
         this.width = w;
         this.height = h;
-        this.color = Color.WHITE;
+        this.color = Color.blue;
         walls.add(this);
     }
 

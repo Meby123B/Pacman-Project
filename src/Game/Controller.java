@@ -8,7 +8,6 @@ package Game;
 
 public class Controller {
     public static LinkedList<GameObject> allObjects = new LinkedList<>();
-//    public static GameObject[] all = new GameObject[5];
     public static LinkedList<GameObject> toRemove = new LinkedList<>();
     public static void updateAll(){
         Player player = Player.getInstance();

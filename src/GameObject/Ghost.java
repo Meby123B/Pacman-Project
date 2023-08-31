@@ -9,7 +9,7 @@ public class Ghost extends GameObject implements  Movable{
     public Ghost(){
         x =400;
         y =200;
-        color = Color.blue;
+        color = Color.red;
     }
     public void playerCollide(){
 
