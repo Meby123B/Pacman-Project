@@ -1,19 +1,23 @@
 package GameObject;
 
+import Game.Controller;
 import Game.KeyHandler;
 import Game.ScreenSettings;
 
 import java.awt.*;
 
-public class Player extends GameObject implements Movable {
+public class Player extends GameObject implements Movable, Eatable{
     int speed = 4;
     MoveSides direction=null;
+    int life;
 
     static Player instance;
     public static Player getInstance(){
 
         if (instance == null){
             Player p = new Player();
+            p.life = 3;
+            System.out.println("life: " + p.life );
             p.y = 2*ScreenSettings.tileSize;
             p.x = 12*ScreenSettings.tileSize;
             p.color = Color.ORANGE;
@@ -38,7 +42,8 @@ public class Player extends GameObject implements Movable {
         }
     }
     public void update() {
-//        System.out.println(direction);
+        if (life <=0) {return;}
+//        System.out.println(direction); //D🪲
         checkKeys();
         move(direction);
     }
@@ -51,7 +56,7 @@ public class Player extends GameObject implements Movable {
     @Override
     public void move(MoveSides dir) {
         Movement.moveObject(this, dir);
-        System.out.println("x:"+x+" y:"+y);
+//        System.out.println("x:"+x+" y:"+y); //D🪲
     }
 
     @Override
@@ -60,7 +65,7 @@ public class Player extends GameObject implements Movable {
     }
 
     @Override
-    public void playerCollide() {    }
+    public void playerCollide(Player p) {    }
         @Override
     public MoveSides getDirection() {
         return direction;
@@ -68,5 +73,22 @@ public class Player extends GameObject implements Movable {
     @Override
     public void setDirection(MoveSides dir) {
         this.direction = dir;
+    }
+
+    private void loseLife(){
+        life--;
+        System.out.println("AUCH!");
+        System.out.println("life: " + life);
+
+        if (life <= 0){gameover();}
+    }
+    private void gameover(){
+        Controller.removeObj(this);
+        System.out.println("GAME OVER!");
+    }
+
+    @Override
+    public void whenEaten() {
+        loseLife();
     }
 }

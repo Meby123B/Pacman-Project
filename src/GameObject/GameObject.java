@@ -33,17 +33,18 @@ public abstract class GameObject {
     }
     public void getColor(Color newColor){ color = newColor;}
     public Color getColor(){return color;}
-    public abstract void playerCollide();
+    public abstract void playerCollide(Player p);
 
 
 
     public boolean checkCollision(GameObject other){
-        if (getUp() <= other.getDown()
-                && getDown() >= other.getUp()
-                && getLeft() <= other.getRight()
-                && getRight()-2 >= other.getLeft()
+        if (
+            getUp() <= other.getDown()
+            && getDown() >= other.getUp()
+            && getLeft() <= other.getRight()
+            && getRight() >= other.getLeft()
         ){
-            other.playerCollide();
+            other.playerCollide(Player.getInstance());
             return true;
         }
         return false;

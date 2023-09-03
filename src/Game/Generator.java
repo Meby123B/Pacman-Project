@@ -9,7 +9,7 @@ public class Generator {
     static int scrHeight = ScreenSettings.height;
     static int scrWidth = ScreenSettings.width;
 
-    public static void generateWalls(){
+    private static void generateWalls(){
 
         new Wall(0,0, scrWidth, tileSize); //top
         new Wall(0,scrHeight-tileSize, scrWidth, tileSize); //bottom
@@ -22,7 +22,7 @@ public class Generator {
         new Wall(tileSize*10,tileSize*8, tileSize*10, tileSize);
         new Wall(tileSize*15,tileSize*10, tileSize*10, tileSize);
     }
-    public static void generateDots(){
+    private static void generateDots(){
 
         Random rand = new Random();
         int x,y;
@@ -34,27 +34,47 @@ public class Generator {
 
             dot = new Dot(x*tileSize,y*tileSize);
             if (Movement.checkWallCollision(dot)){
-                System.out.println("aya!");
+//                System.out.println("aya!"); //D🪲 happened?
+                i--;
                 continue;
             }
             Controller.allObjects.add(dot);
+//            System.out.println(Controller.allObjects.size()); //D🪲 check how many dots generated
         }
 
     }
-    public static void generateEntity(){
+    private static void generateEntity(){
 
         Player player = Player.getInstance();
-        Ghost ghost = new Ghost();
+//        Ghost ghost = new Ghost(200,400);
 
         Controller.allObjects.add(player);
-        Controller.allObjects.add(ghost);
+//        Controller.allObjects.add(ghost);
+
+        Random rand = new Random();
+        int x,y;
+        Ghost ghost;
+
+        for (int i = 0; i < 10; i++) {
+            x = rand.nextInt(ScreenSettings.maxScreenCol);
+            y = rand.nextInt(ScreenSettings.maxScreenRow);
+
+            ghost = new Ghost(x * tileSize, y * tileSize);
+            if (Movement.checkWallCollision(ghost)) {
+//                System.out.println("aya!"); //D🪲 happened?
+                i--;
+                continue;
+            }
+            Controller.allObjects.add(ghost);
+            Controller.ghosts.add(ghost);
+        }
 
     }
 
     public static void generateAll() {
 
+        generateWalls();
         generateDots();
         generateEntity();
-        generateWalls();
     }
 }

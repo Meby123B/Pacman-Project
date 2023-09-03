@@ -52,6 +52,7 @@ public class Movement {
 
     public static boolean checkWallCollision(GameObject o){ //Todo move it!
         for (int i = 0; i < Wall.walls.size(); i++) {
+
             if(o.checkCollision(Wall.walls.get(i))){
                 return true;
             }

@@ -4,15 +4,17 @@ import Game.Controller;
 
 import java.awt.*;
 
-public class Ghost extends GameObject implements  Movable{
+public class Ghost extends GameObject implements  Movable, Eatable{
+    int speed = 3;
     MoveSides direction=null;
-    public Ghost(){
-        x =400;
-        y =200;
+    public Ghost(int x, int y){
+        this.x = x;
+        this.y = y;
         color = Color.red;
     }
-    public void playerCollide(){
-
+    public void playerCollide(Player p){
+        p.whenEaten();
+        this.whenEaten();
     }
 
     @Override
@@ -27,7 +29,7 @@ public class Ghost extends GameObject implements  Movable{
 
     @Override
     public int getSpeed() {
-        return 4;
+        return speed;
     }
 
     @Override
@@ -38,5 +40,10 @@ public class Ghost extends GameObject implements  Movable{
     @Override
     public void setDirection(MoveSides dir) {
         this.direction = dir;
+    }
+
+    @Override
+    public void whenEaten() {
+        Controller.removeObj(this);
     }
 }

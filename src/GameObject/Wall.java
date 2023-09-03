@@ -17,8 +17,6 @@ public class Wall extends GameObject{
     }
 
     @Override
-    public void playerCollide() {
-        System.out.println("DON'T TOUCH ME!");
-    }
+    public void playerCollide(Player p) {}
 
 }
