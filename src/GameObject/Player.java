@@ -7,7 +7,7 @@ import Game.ScreenSettings;
 import java.awt.*;
 
 public class Player extends GameObject implements Movable, Eatable{
-    int speed = 4;
+    int speed = 2;
     MoveSides direction=null;
     int life;
 
@@ -18,8 +18,8 @@ public class Player extends GameObject implements Movable, Eatable{
             Player p = new Player();
             p.life = 3;
             System.out.println("life: " + p.life );
-            p.y = 2*ScreenSettings.tileSize;
-            p.x = 12*ScreenSettings.tileSize;
+            p.y = 23*ScreenSettings.tileSize;
+            p.x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
             p.color = Color.ORANGE;
 
             instance = p;

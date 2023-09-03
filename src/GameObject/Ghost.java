@@ -7,10 +7,10 @@ import java.awt.*;
 public class Ghost extends GameObject implements  Movable, Eatable{
     int speed = 3;
     MoveSides direction=null;
-    public Ghost(int x, int y){
+    public Ghost(int x, int y, Color color){
         this.x = x;
         this.y = y;
-        color = Color.red;
+        this.color = color;
     }
     public void playerCollide(Player p){
         p.whenEaten();

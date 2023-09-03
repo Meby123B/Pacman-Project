@@ -21,7 +21,7 @@ public class Controller {
 
     }
     public static void drawAll(Graphics2D g2){
-        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
+//        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
         Wall.walls.forEach(wall ->  wall.draw(g2));
         allObjects.forEach(obj -> obj.draw(g2));
     }

@@ -15,7 +15,7 @@ public class Dot extends GameObject implements Collectable{
         this.y = y + tileSize/4;
         this.width = tileSize / 2;
         this.height = tileSize / 2;
-        color = Color.green;
+        color = Color.PINK;
         value = 100;
     }
     public void playerCollide(Player p){
