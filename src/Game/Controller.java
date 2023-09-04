@@ -9,12 +9,13 @@ package Game;
 
 public class Controller {
     public static LinkedList<GameObject> allObjects = new LinkedList<>();
-    public static ArrayList<GameObject> ghosts = new ArrayList<>();
+    public static ArrayList<Ghost> ghosts = new ArrayList<>();
     public static LinkedList<GameObject> toRemove = new LinkedList<>();
     private static final Player player = Player.getInstance();
 
     public static void updateAll(){
         player.update();
+        ghosts.forEach(g -> g.update());
 
         allObjects.forEach(obj -> player.checkCollision(obj));
         toRemove.forEach(obj -> allObjects.remove(obj));

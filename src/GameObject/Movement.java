@@ -13,6 +13,7 @@ public class Movement {
 
         if (checkWallCollision(obj)){
             cancelMove(obj,dir);
+            resetDirection(obj);
         }
     }
     public static void changeDirection(GameObject obj, MoveSides dir){

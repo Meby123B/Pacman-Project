@@ -12,6 +12,9 @@ public class Ghost extends GameObject implements  Movable, Eatable{
         this.y = y;
         this.color = color;
     }
+    public void update() {
+
+    }
     public void collideWithPlayer(Player p){
         p.whenEaten();
         this.whenEaten();
@@ -23,9 +26,7 @@ public class Ghost extends GameObject implements  Movable, Eatable{
     }
 
     @Override
-    public void changeDirection(MoveSides dir) {
-
-    }
+    public void changeDirection(MoveSides dir) {}
 
     @Override
     public int getSpeed() {

@@ -45,7 +45,12 @@ public abstract class GameObject {
             && getLeft() <= other.getRight()
             && getRight() >= other.getLeft()
         ){
-            other.collideWithPlayer(Player.getInstance());
+            if (this instanceof Player){
+                other.collideWithPlayer((Player)this);
+
+            } else if (this instanceof Ghost){
+                other.collideWithGhost((Ghost)this);
+            }
             return true;
         }
         return false;
