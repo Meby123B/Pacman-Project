@@ -37,7 +37,6 @@ public class Generator {
         new Wall(0,ts*9,ts*6,ts*5);
         new Wall(ts*22,ts*9,ts*6,ts*5);
 
-        new Wall(ts*22,ts*9,ts*15,ts*15);
 
 
         // ghosts cell
@@ -124,14 +123,25 @@ public class Generator {
     }
 
     private static void generateZones(){
-//        Zone zone = new Zone(ZoneTypes.EMPTY, )
-    }
+        int ts = ScreenSettings.tileSize;
+//        new Wall(ts*7,ts*9,ts*14,ts*11); // שטח פנימי ריק //todo הפוך לZONE
 
+        //teleporters
+        Teleporter teleporter = new Teleporter(-ts-(ts/2),ts*14,
+                ScreenSettings.width-ts/2, ts*14 );
+
+        Teleporter teleporter2 = new Teleporter(ScreenSettings.width+(ts/2),ts*14,
+                -(ts/2),ts*14 );
+
+        Controller.allObjects.add(teleporter);
+        Controller.allObjects.add(teleporter2);
+    }
 
         public static void generateAll() {
 
         generateWalls();
         generateDots();
         generateEntity();
+        generateZones();
     }
 }

@@ -65,7 +65,7 @@ public class Player extends GameObject implements Movable, Eatable{
     }
 
     @Override
-    public void playerCollide(Player p) {    }
+    public void collideWithPlayer(Player p) {    }
         @Override
     public MoveSides getDirection() {
         return direction;

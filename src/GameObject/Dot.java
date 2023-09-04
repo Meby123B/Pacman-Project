@@ -18,7 +18,7 @@ public class Dot extends GameObject implements Collectable{
         color = Color.PINK;
         value = 100;
     }
-    public void playerCollide(Player p){
+    public void collideWithPlayer(Player p){
         collect();
     }
 

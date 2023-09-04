@@ -12,7 +12,7 @@ public class Ghost extends GameObject implements  Movable, Eatable{
         this.y = y;
         this.color = color;
     }
-    public void playerCollide(Player p){
+    public void collideWithPlayer(Player p){
         p.whenEaten();
         this.whenEaten();
     }

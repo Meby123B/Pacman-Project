@@ -33,7 +33,7 @@ public class Wall extends GameObject {
     }
 
     @Override
-    public void playerCollide(Player p) {
+    public void collideWithPlayer(Player p) {
     }
 
 }

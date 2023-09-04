@@ -1,5 +1,7 @@
 package GameObject;
 
+import Game.ScreenSettings;
+
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -7,39 +9,29 @@ public class Teleporter extends GameObject{
     public static LinkedList<Teleporter> list = new LinkedList<>();
     static private int count =0;
 
-    private int id;
-    private int goTo;
+    private int goToX;
+    private int goToY;
 
-    public Teleporter(int x, int y, int w, int h) {
+    public Teleporter(int x, int y, int goToX, int goToY) {
         this.x = x;
         this.y = y;
-        this.width = w;
-        this.height = h;
-        setId(this);
+        this.goToX = goToX;
+        this.goToY = goToY;
+
         list.add(this);
     }
 
 
     @Override
-    public void playerCollide(Player p) {
-
+    public void collideWithPlayer(Player p) {
+        teleportTo(p);
     }
-    private void setId(Teleporter teleporter) {
-        id = count++;
-        if (count %2 == 1){
-            goTo = count;
-        } else {
-            goTo = count -2;
-        }
-    }
-
     private void teleportTo(Player p) {
-        Teleporter exit = list.get(goTo);
-        p.setX(exit.getX());
-        p.setY(exit.getY());
+        p.setX(goToX);
+        p.setY(goToY);
     }
-    @Override
-    public void draw(Graphics2D g2) {
-
-    }
+//    @Override
+//    public void draw(Graphics2D g2) {
+//
+//    }
 }

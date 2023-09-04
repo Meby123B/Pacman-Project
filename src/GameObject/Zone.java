@@ -21,7 +21,7 @@ public class Zone extends GameObject{
 
 
     @Override
-    public void playerCollide(Player p) {
+    public void collideWithPlayer(Player p) {
 //        if (type == ZoneTypes.TELEPORTER) teleportTo(p);
     }
     @Override

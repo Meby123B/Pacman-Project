@@ -8,7 +8,7 @@ public abstract class GameObject {
     protected int x,y;
     int width = tileSize;
     int height = tileSize;
-    Color color;
+    Color color = Color.GRAY;
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
@@ -33,7 +33,8 @@ public abstract class GameObject {
     }
     public void getColor(Color newColor){ color = newColor;}
     public Color getColor(){return color;}
-    public abstract void playerCollide(Player p);
+    public abstract void collideWithPlayer(Player p);
+    public abstract void collideWithGhost(Ghost g);
 
 
 
@@ -44,7 +45,7 @@ public abstract class GameObject {
             && getLeft() <= other.getRight()
             && getRight() >= other.getLeft()
         ){
-            other.playerCollide(Player.getInstance());
+            other.collideWithPlayer(Player.getInstance());
             return true;
         }
         return false;
