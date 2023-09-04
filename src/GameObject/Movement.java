@@ -1,5 +1,6 @@
 package GameObject;
 
+
 public class Movement {
     static int objSpeed;
     static MoveSides lastDirection;
@@ -51,9 +52,9 @@ public class Movement {
 
 
     public static boolean checkWallCollision(GameObject o){ //Todo move it!
-        for (int i = 0; i < Wall.walls.size(); i++) {
+        for (int i = 0; i < Wall.list.size(); i++) {
 
-            if(o.checkCollision(Wall.walls.get(i))){
+            if(o.checkCollision(Wall.list.get(i))){
                 return true;
             }
         }
@@ -74,7 +75,11 @@ public class Movement {
     }
 
     private static void resetDirection(GameObject obj){
-        ((Movable)obj).setDirection(lastDirection);
+        Movable mObj = (Movable)obj;
+        if (mObj.getDirection() == lastDirection){
+           lastDirection = null;
+        }
+        mObj.setDirection(lastDirection);
     }
     private static void setDirection(GameObject obj, MoveSides newDirection){
         ((Movable)obj).setDirection(newDirection);

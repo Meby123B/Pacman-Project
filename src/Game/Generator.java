@@ -12,56 +12,71 @@ public class Generator {
 
     private static void generateWalls(){
         int ts = tileSize;
-        new Wall(0,0, scrWidth, ts); //top
-        new Wall(0,scrHeight-ts, scrWidth, ts); //bottom
-        new Wall(0,0, ts, scrHeight); //left
-        new Wall(scrWidth-ts,0, ts, scrHeight); //right
 
 
+        //line 1
         new Wall(ts*2,ts*2,ts*4,ts*3);
         new Wall(ts*7,ts*2,ts*5,ts*3);
         new Wall(ts*13,0,ts*2,ts*5);
         new Wall(ts*16,ts*2,ts*5,ts*3);
         new Wall(ts*22,ts*2,ts*4,ts*3);
 
+        //line 3 middle
+        new Wall(ts*7,ts*9,ts*5,ts*2);
+        new Wall(ts*16,ts*9,ts*5,ts*2);
+
+        //line 2
         new Wall(ts*2,ts*6,ts*4,ts*2);
         new Wall(ts*7,ts*6,ts*2,ts*8);
-        new Wall(ts*10,ts*6,ts*8,ts*2);
         new Wall(ts*13,ts*6,ts*2,ts*5);
+        new Wall(ts*10,ts*6,ts*8,ts*2);
         new Wall(ts*19,ts*6,ts*2,ts*8);
         new Wall(ts*22,ts*6,ts*4,ts*2);
 
+        //line 3
         new Wall(0,ts*9,ts*6,ts*5);
-        new Wall(ts*7,ts*9,ts*5,ts*2);
-        new Wall(ts*16,ts*9,ts*5,ts*2);
         new Wall(ts*22,ts*9,ts*6,ts*5);
 
+        new Wall(ts*22,ts*9,ts*15,ts*15);
+
+
+        // ghosts cell
         new Wall(ts*10,ts*12,ts*8,ts*5);
 
+        //line 4
         new Wall(0,ts*15,ts*6,ts*5);
         new Wall(ts*7,ts*15,ts*2,ts*5);
         new Wall(ts*19,ts*15,ts*2,ts*5);
         new Wall(ts*22,ts*15,ts*6,ts*5);
 
-        new Wall(ts*10,ts*18,ts*8,ts*2);
         new Wall(ts*13,ts*18,ts*2,ts*5);
+        new Wall(ts*10,ts*18,ts*8,ts*2);
 
-        new Wall(ts*2,ts*21,ts*4,ts*2);
+        //line 5
         new Wall(ts*4,ts*21,ts*2,ts*5);
+        new Wall(ts*2,ts*21,ts*4,ts*2);
         new Wall(ts*7,ts*21,ts*5,ts*2);
         new Wall(ts*16,ts*21,ts*5,ts*2);
-        new Wall(ts*22,ts*21,ts*4,ts*2);
         new Wall(ts*22,ts*21,ts*2,ts*5);
+        new Wall(ts*22,ts*21,ts*4,ts*2);
 
+        //line 6
         new Wall(ts*0,ts*24,ts*3,ts*2);
         new Wall(ts*7,ts*24,ts*2,ts*5);
-        new Wall(ts*10,ts*24,ts*8,ts*2);
         new Wall(ts*13,ts*24,ts*2,ts*5);
+        new Wall(ts*10,ts*24,ts*8,ts*2);
         new Wall(ts*19,ts*24,ts*2,ts*5);
         new Wall(ts*25,ts*24,ts*3,ts*2);
 
-        new Wall(ts*2,ts*27,ts*10,ts*2);
         new Wall(ts*16,ts*27,ts*10,ts*2);
+        new Wall(ts*2,ts*27,ts*10,ts*2);
+
+        new Wall(0,0, ts, (ts*14)); //left
+        new Wall(0,(ts*15), ts, (ts*16)); //left
+        new Wall(scrWidth-ts,0, ts, (ts*14)); //right
+        new Wall(scrWidth-ts,(ts*15), ts, (ts*16)); //right
+        new Wall(0,0, scrWidth, ts); //top
+        new Wall(0,scrHeight-ts, scrWidth, ts); //bottom
     }
     private static void generateDots(){
 
@@ -94,23 +109,26 @@ public class Generator {
 
 
         Controller.allObjects.add(player);
-//        Controller.allObjects.add(ghost);
-
-
 
             Controller.allObjects.add(ghost1);
             Controller.ghosts.add(ghost1);
+
             Controller.allObjects.add(ghost2);
             Controller.ghosts.add(ghost2);
+
             Controller.allObjects.add(ghost3);
             Controller.ghosts.add(ghost3);
+
             Controller.allObjects.add(ghost4);
             Controller.ghosts.add(ghost4);
-
-
     }
 
-    public static void generateAll() {
+    private static void generateZones(){
+//        Zone zone = new Zone(ZoneTypes.EMPTY, )
+    }
+
+
+        public static void generateAll() {
 
         generateWalls();
         generateDots();

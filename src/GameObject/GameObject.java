@@ -5,7 +5,7 @@ import java.awt.*;
 import static Game.ScreenSettings.tileSize;
 
 public abstract class GameObject {
-    int x,y;
+    protected int x,y;
     int width = tileSize;
     int height = tileSize;
     Color color;

@@ -11,7 +11,7 @@ public class Controller {
     public static LinkedList<GameObject> allObjects = new LinkedList<>();
     public static ArrayList<GameObject> ghosts = new ArrayList<>();
     public static LinkedList<GameObject> toRemove = new LinkedList<>();
-    private static Player player = Player.getInstance();
+    private static final Player player = Player.getInstance();
 
     public static void updateAll(){
         player.update();
@@ -22,7 +22,7 @@ public class Controller {
     }
     public static void drawAll(Graphics2D g2){
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
-        Wall.walls.forEach(wall ->  wall.draw(g2));
+        Wall.list.forEach(wall ->  wall.draw(g2));
         allObjects.forEach(obj -> obj.draw(g2));
     }
 

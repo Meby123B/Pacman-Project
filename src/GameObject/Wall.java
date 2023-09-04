@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Wall extends GameObject {
 
-    public static ArrayList<Wall> walls = new ArrayList<>();
+    public static ArrayList<Wall> list = new ArrayList<>();
 
     public Wall(int x, int y, int w, int h) {
         this.x = x;
@@ -15,13 +15,13 @@ public class Wall extends GameObject {
         this.width = w;
         this.height = h;
         this.color = Color.blue;
-        walls.add(this);
+        list.add(this);
     }
 
     @Override
     public void draw(Graphics2D g2) {
-//        g2.setColor(Color.GRAY);
-//        g2.fillRect(x, y, width, height);
+        g2.setColor(Color.black);
+        g2.fillRect(x, y, width, height);
         int gap = 3 * ScreenSettings.scale;
 
         g2.setColor(color);

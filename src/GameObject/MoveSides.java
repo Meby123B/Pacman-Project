@@ -1,5 +1,5 @@
 package GameObject;
 
 public enum MoveSides {
-    UP,DOWN,LEFT,RIGHT
+    UP, DOWN, LEFT, RIGHT
 }
