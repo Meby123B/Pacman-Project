@@ -11,7 +11,7 @@ public class Movement {
         extractSpeedAndDir(obj);
         moveIt(obj,dir);
 
-        if (checkWallCollision(obj)){
+        if (obj.isCollideWithWall()){
             cancelMove(obj,dir);
             resetDirection(obj);
         }
@@ -23,7 +23,7 @@ public class Movement {
         setDirection(obj,dir);
 
         moveIt(obj,dir);
-        if (checkWallCollision(obj)){
+        if (obj.isCollideWithWall()){
             resetDirection(obj);
         }
             cancelMove(obj,dir);
@@ -49,17 +49,6 @@ public class Movement {
             case LEFT -> moveRight(obj);
             case RIGHT -> moveLeft(obj);
         }
-    }
-
-
-    public static boolean checkWallCollision(GameObject o){ //Todo move it!
-        for (int i = 0; i < Wall.list.size(); i++) {
-
-            if(o.checkCollision(Wall.list.get(i))){
-                return true;
-            }
-        }
-        return false;
     }
 
     private static void moveUp(GameObject obj){

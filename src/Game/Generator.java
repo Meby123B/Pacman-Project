@@ -88,7 +88,7 @@ public class Generator {
             y = rand.nextInt(ScreenSettings.maxScreenRow);
 
             dot = new Dot(x * tileSize, y * tileSize);
-            if (Movement.checkWallCollision(dot)) {
+            if (dot.isCollideWithWall()) {
 //                System.out.println("aya!"); //D🪲 happened?
                 i--;
                 continue;
@@ -111,15 +111,18 @@ public class Generator {
         Controller.allObjects.add(ghost1);
         Controller.ghosts.add(ghost1);
 
-        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
+//        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
         Controller.allObjects.add(ghost2);
         Controller.ghosts.add(ghost2);
 
-        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
+//        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
         Controller.allObjects.add(ghost3);
         Controller.ghosts.add(ghost3);
 
-        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+//        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
         Controller.allObjects.add(ghost4);
         Controller.ghosts.add(ghost4);
 

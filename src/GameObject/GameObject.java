@@ -56,5 +56,15 @@ public abstract class GameObject {
         return false;
     }
 
+    public boolean isCollideWithWall(){
+        for (int i = 0; i < Wall.list.size(); i++) {
+
+            if(checkCollision(Wall.list.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }

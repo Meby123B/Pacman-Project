@@ -5,7 +5,7 @@ import Game.Controller;
 import java.awt.*;
 
 public class Ghost extends GameObject implements  Movable, Eatable{
-    int speed = 3;
+    int speed = 2;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
         this.x = x;
@@ -13,6 +13,11 @@ public class Ghost extends GameObject implements  Movable, Eatable{
         this.color = color;
     }
     public void update() {
+        System.out.println("g:dir " + direction);
+        if (direction == null){
+            direction = Ai.getDirection();
+        }
+        move(direction);
 
     }
     public void collideWithPlayer(Player p){

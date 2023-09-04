@@ -20,7 +20,7 @@ public class Player extends GameObject implements Movable, Eatable{
             System.out.println("life: " + p.life );
             p.y = 23*ScreenSettings.tileSize;
             p.x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
-            p.color = Color.ORANGE;
+            p.color = Color.YELLOW;
 
             instance = p;
             return p;
