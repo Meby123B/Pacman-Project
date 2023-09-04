@@ -26,12 +26,14 @@ public class Teleporter extends GameObject{
     public void collideWithPlayer(Player p) {
         teleportTo(p);
     }
-    private void teleportTo(Player p) {
-        p.setX(goToX);
-        p.setY(goToY);
+    @Override
+    public void collideWithGhost(Ghost g) {
+        teleportTo(g);
     }
-//    @Override
-//    public void draw(Graphics2D g2) {
-//
-//    }
+    private void teleportTo(GameObject obj) {
+        obj.setX(goToX);
+        obj.setY(goToY);
+    }
+    @Override
+    public void draw(Graphics2D g2) {}
 }

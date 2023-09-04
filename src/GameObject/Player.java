@@ -91,4 +91,6 @@ public class Player extends GameObject implements Movable, Eatable{
     public void whenEaten() {
         loseLife();
     }
+    @Override
+    public void collideWithGhost(Ghost g) {}
 }

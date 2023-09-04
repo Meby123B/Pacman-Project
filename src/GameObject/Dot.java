@@ -34,5 +34,7 @@ public class Dot extends GameObject implements Collectable{
         System.out.println(score);
         Controller.removeObj(this);
     }
+    @Override
+    public void collideWithGhost(Ghost g) { }
 
 }
