@@ -1,12 +1,12 @@
 package GameObject;
 
 import Game.Controller;
+import Game.Manager.Score;
 import Game.ScreenSettings;
 
 import java.awt.*;
 
 public class Dot extends GameObject implements Collectable{
-    static int score = 0;
     int value;
     public Dot(int x, int y){
         int tileSize = ScreenSettings.tileSize;
@@ -16,7 +16,7 @@ public class Dot extends GameObject implements Collectable{
         this.width = tileSize / 2;
         this.height = tileSize / 2;
         color = Color.PINK;
-        value = 100;
+        value = 10;
     }
     public void collideWithPlayer(Player p){
         collect();
@@ -30,8 +30,7 @@ public class Dot extends GameObject implements Collectable{
 
     @Override
     public void collect() {
-        score += value;
-        System.out.println(score);
+        Score.increase(value);
         Controller.removeObj(this);
     }
     @Override

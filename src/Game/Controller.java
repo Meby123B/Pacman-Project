@@ -1,5 +1,7 @@
 package Game;
 
+    import Game.Manager.Life;
+    import Game.Manager.Score;
     import GameObject.*;
 
 
@@ -25,6 +27,8 @@ public class Controller {
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
         Wall.list.forEach(wall ->  wall.draw(g2));
         allObjects.forEach(obj -> obj.draw(g2));
+        Score.draw(g2);
+        Life.draw(g2);
     }
 
     //DEBUG🐞🐞🪲🐜🐛🦗🪳

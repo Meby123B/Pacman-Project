@@ -2,6 +2,7 @@ package GameObject;
 
 import Game.Controller;
 import Game.KeyHandler;
+import Game.Manager.Life;
 import Game.ScreenSettings;
 
 import java.awt.*;
@@ -76,11 +77,8 @@ public class Player extends GameObject implements Movable, Eatable{
     }
 
     private void loseLife(){
-        life--;
-        System.out.println("AUCH!");
-        System.out.println("life: " + life);
-
-        if (life <= 0){gameover();}
+        Life.lose();
+        if (Life.getLife() <= 0){gameover();}
     }
     private void gameover(){
         Controller.removeObj(this);

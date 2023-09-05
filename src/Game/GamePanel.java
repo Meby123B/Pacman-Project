@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable{
 //        Controller.allObjects.add(ghost5);
 //        Controller.ghosts.add(ghost5);
 
-        this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height));
+        this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height+50));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
