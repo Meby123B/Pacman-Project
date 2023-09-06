@@ -35,10 +35,10 @@ public abstract class GameObject {
     public void setY(int newY) {
         this.y = newY;
     }
-    public void getColor(Color newColor){ color = newColor;}
+    public void setColor(Color newColor){ color = newColor;}
     public Color getColor(){return color;}
-    public abstract void collideWithPlayer(Player p);
-    public abstract void collideWithGhost(Ghost g);
+    public  void collideWithPlayer(Player p){};
+    public  void collideWithGhost(Ghost g){};
 
 
 

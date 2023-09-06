@@ -21,13 +21,8 @@ public class Tunnel extends GameObject {
 
 
     @Override
-    public void collideWithPlayer(Player p) {
-        System.out.println("now you going to slow down!!");
-
-    }
-
-    @Override
     public void collideWithGhost(Ghost g) {
+        System.out.println("now you going to slow down!!");
 
     }
 

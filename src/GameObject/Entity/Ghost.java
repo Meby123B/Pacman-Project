@@ -56,6 +56,4 @@ public class Ghost extends GameObject implements Movable, Eatable {
     public void whenEaten() {
         Controller.removeObj(this);
     }
-    @Override
-    public void collideWithGhost(Ghost g) {}
 }

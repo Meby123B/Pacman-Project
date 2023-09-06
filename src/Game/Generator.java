@@ -87,7 +87,7 @@ public class Generator {
 
         for (x = 0; x < ScreenSettings.maxScreenCol; x++) {
             for (y = 0; y < ScreenSettings.maxScreenRow; y++) {
-                    
+
                 dot = new Dot(x * ts, y * ts);
                 if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
                     System.out.println("aya!"); //D🪲 happened?

@@ -20,16 +20,6 @@ public class EmptyZone extends GameObject {
 
 
     @Override
-    public void collideWithPlayer(Player p) {
-
-    }
-
-    @Override
-    public void collideWithGhost(Ghost g) {
-
-    }
-
-    @Override
     public void draw(Graphics2D g2) {
 //        g2.setColor(Color.gray);
 //        g2.fillRect(x, y, width, height);

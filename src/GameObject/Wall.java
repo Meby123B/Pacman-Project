@@ -33,9 +33,6 @@ public class Wall extends GameObject {
         g2.fillRect(x+width-(gap*2),y+gap,gap,height-(gap*2));
 
     }
-
-    @Override
-    public void collideWithPlayer(Player p) {}
-    public void collideWithGhost(Ghost g) {}
+    
 
 }

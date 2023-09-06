@@ -68,8 +68,6 @@ public class Player extends GameObject implements Movable, Eatable {
         Movement.changeDirection(this, dir);
     }
 
-    @Override
-    public void collideWithPlayer(Player p) {    }
         @Override
     public MoveSides getDirection() {
         return direction;

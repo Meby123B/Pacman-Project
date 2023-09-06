@@ -5,7 +5,6 @@ package Game;
     import GameObject.*;
     import GameObject.Entity.Entity;
     import GameObject.Environment.Environment;
-    import GameObject.Entity.Ghost;
     import GameObject.Entity.Player;
 
 
