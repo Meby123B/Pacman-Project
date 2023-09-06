@@ -58,6 +58,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public void whenEaten() {
-        Controller.removeObj(this);
+        Controller.resetEntities();
+//        this.resetPosition();
     }
 }

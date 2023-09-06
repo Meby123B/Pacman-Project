@@ -69,4 +69,8 @@ public class Controller {
     }
 
 
+    public static void resetEntities() {
+        GameLoop.waitFrames(180);
+        Entity.list.forEach(obj -> obj.resetPosition());
+    }
 }

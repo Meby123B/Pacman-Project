@@ -7,6 +7,7 @@ public class GameLoop {
     static private double delta = 0;
     static private long lastTime = System.nanoTime();
     static private long currentTime;
+    static private int waitFor = 0;
 
     public static void loop(GamePanel gp) {
         updateTimings();
@@ -15,8 +16,13 @@ public class GameLoop {
 
     private static void getOnceInFrame(GamePanel gp) {
         if (delta >= 1) {
+            if (waitFor <= 0){
+
             gp.update();
             gp.repaint();
+            }else {
+                waitFor--;
+            }
             delta--;
         }
     }
@@ -26,5 +32,8 @@ public class GameLoop {
         delta += (currentTime -lastTime) / drawInterval;
         lastTime = currentTime;
     }
+    public static void waitFrames(int numOfFrames){
+        waitFor = numOfFrames;
+    }
 
-}
+        }
