@@ -6,11 +6,11 @@ import Game.Manager.Life;
 import Game.ScreenSettings;
 import GameObject.Eatable;
 import GameObject.Movable;
-//import GameObject.*;
+import GameObject.GameObject;
 
 import java.awt.*;
 
-public class Player extends GameObject.GameObject implements Movable, Eatable {
+public class Player extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
     int life;
