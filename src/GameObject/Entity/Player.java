@@ -26,6 +26,8 @@ public class Player extends GameObject implements Movable, Eatable {
             p.x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
             p.color = Color.YELLOW;
 
+            p.setOriginalPos(p.x,p.y);
+
             Entity.list.add(p);
             instance = p;
             return p;
@@ -81,6 +83,7 @@ public class Player extends GameObject implements Movable, Eatable {
 
     private void loseLife(){
         Life.lose();
+        resetPosition();
         if (Life.getLife() <= 0){gameover();}
     }
     private void gameover(){
@@ -94,4 +97,5 @@ public class Player extends GameObject implements Movable, Eatable {
     }
     @Override
     public void collideWithGhost(Ghost g) {}
+
 }

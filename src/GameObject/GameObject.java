@@ -13,6 +13,7 @@ public abstract class GameObject {
     protected int width = tileSize;
     protected int height = tileSize;
     protected Color color = Color.GRAY;
+    private int originalX , originalY;
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
@@ -81,5 +82,15 @@ public abstract class GameObject {
 
 
     public void update() {
+    }
+
+    public void resetPosition() {
+        this.x = originalX;
+        this.y = originalY;
+    }
+
+    protected void setOriginalPos(int x, int y) {
+        this.originalX = x;
+        this.originalY = y;
     }
 }

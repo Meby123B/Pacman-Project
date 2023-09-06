@@ -15,6 +15,8 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         this.y = y;
         this.color = color;
 
+        super.setOriginalPos(x,y);
+
         Entity.list.add(this);
     }
     @Override
