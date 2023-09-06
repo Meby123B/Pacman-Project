@@ -1,4 +1,4 @@
-package GameObject;
+package GameObject.Entity;
 
 import GameObject.Entity.MoveSides;
 

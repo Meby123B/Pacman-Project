@@ -1,11 +1,13 @@
 package GameObject.Entity;
 
 import Game.Controller;
-import GameObject.*;
+import GameObject.Eatable;
+import GameObject.Movable;
+//import GameObject.*;
 
 import java.awt.*;
 
-public class Ghost extends GameObject implements Movable, Eatable {
+public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
