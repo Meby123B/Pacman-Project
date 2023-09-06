@@ -3,6 +3,7 @@ package Game;
     import Game.Manager.Life;
     import Game.Manager.Score;
     import GameObject.*;
+    import GameObject.Environment.Environment;
 
 
     import java.awt.*;
@@ -25,6 +26,7 @@ public class Controller {
     }
     public static void drawAll(Graphics2D g2){
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
+        Environment.list.forEach(e -> e.draw(g2));
         Wall.list.forEach(wall ->  wall.draw(g2));
         allObjects.forEach(obj -> obj.draw(g2));
         Score.draw(g2);

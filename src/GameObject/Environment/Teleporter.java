@@ -1,12 +1,10 @@
-package GameObject;
+package GameObject.Environment;
 
-import Game.ScreenSettings;
+import GameObject.*;
 
 import java.awt.*;
-import java.util.LinkedList;
 
-public class Teleporter extends GameObject{
-    public static LinkedList<Teleporter> list = new LinkedList<>();
+public class Teleporter extends GameObject {
     static private int count =0;
 
     private int goToX;
@@ -18,7 +16,7 @@ public class Teleporter extends GameObject{
         this.goToX = goToX;
         this.goToY = goToY;
 
-        list.add(this);
+        Environment.list.add(this);
     }
 
 

@@ -1,17 +1,19 @@
 package Game;
 
 import GameObject.*;
+import GameObject.Environment.EmptyZone;
+import GameObject.Environment.Teleporter;
+import GameObject.Environment.Tunnel;
 
 import java.awt.*;
 import java.util.Random;
 
 public class Generator {
-    static int tileSize = ScreenSettings.tileSize;
+    static int ts = ScreenSettings.tileSize;
     static int scrHeight = ScreenSettings.height;
     static int scrWidth = ScreenSettings.width;
 
     private static void generateWalls() {
-        int ts = tileSize;
 
 
         //line 1
@@ -87,8 +89,8 @@ public class Generator {
             x = rand.nextInt(ScreenSettings.maxScreenCol);
             y = rand.nextInt(ScreenSettings.maxScreenRow);
 
-            dot = new Dot(x * tileSize, y * tileSize);
-            if (dot.isCollideWithWall()) {
+            dot = new Dot(x * ts, y * ts);
+            if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
 //                System.out.println("aya!"); //D🪲 happened?
                 i--;
                 continue;
@@ -102,7 +104,6 @@ public class Generator {
     private static void generateEntity() {
 
         Player player = Player.getInstance();
-        int ts = tileSize;
 
 
         Controller.allObjects.add(player);
@@ -129,9 +130,10 @@ public class Generator {
 
     }
 
-    private static void generateZones() {
-        int ts = ScreenSettings.tileSize;
-//        new Wall(ts*7,ts*9,ts*14,ts*11); // שטח פנימי ריק //todo הפוך לZONE
+    private static void generateEnvironments() {
+        new EmptyZone(ts*7,ts*9,ts*14,ts*11);
+        new Tunnel(0, ts*14, 6*ts,ts);
+        new Tunnel(scrWidth-6*ts, ts*14, 6*ts,ts);
 
         //teleporters
         Teleporter teleporter = new Teleporter(-ts - (ts / 2), ts * 14,
@@ -147,8 +149,8 @@ public class Generator {
     public static void generateAll() {
 
         generateWalls();
+        generateEnvironments();
         generateDots();
         generateEntity();
-        generateZones();
     }
 }

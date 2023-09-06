@@ -1,13 +1,15 @@
 package GameObject;
 
+import GameObject.Environment.Environment;
+
 import java.awt.*;
 
 import static Game.ScreenSettings.tileSize;
 
 public abstract class GameObject {
     protected int x,y;
-    int width = tileSize;
-    int height = tileSize;
+    protected int width = tileSize;
+    protected int height = tileSize;
     Color color = Color.GRAY;
 
     public void draw(Graphics2D g2) {
@@ -60,6 +62,15 @@ public abstract class GameObject {
         for (int i = 0; i < Wall.list.size(); i++) {
 
             if(checkCollision(Wall.list.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean isCollideWithEnvironment() {
+        for (int i = 0; i < Environment.list.size(); i++) {
+
+            if(checkCollision(Environment.list.get(i))){
                 return true;
             }
         }
