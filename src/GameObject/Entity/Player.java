@@ -93,6 +93,7 @@ public class Player extends GameObject implements Movable, Eatable {
 
     @Override
     public void whenEaten() {
+        setDirection(null);
         loseLife();
     }
     @Override

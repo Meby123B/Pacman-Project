@@ -19,6 +19,12 @@ public class Movement {
             resetDirection(obj);
         }
     }
+    public static void moveThroughWall(GameObject obj, MoveSides dir){
+        if (dir == null) return;
+
+        extractSpeedAndDir(obj);
+        moveIt(obj,dir);
+    }
     public static void changeDirection(GameObject obj, MoveSides dir){
         if (dir == null) return;
 

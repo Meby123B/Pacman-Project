@@ -37,8 +37,8 @@ public class Controller {
     }
     public static void drawAll(Graphics2D g2){
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
-        allObjects.forEach(list -> list.forEach(obj -> obj.draw(g2)) );
         Wall.list.forEach(wall ->  wall.draw(g2));
+        allObjects.forEach(list -> list.forEach(obj -> obj.draw(g2)) );
         Score.draw(g2);
         Life.draw(g2);
     }

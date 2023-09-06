@@ -127,15 +127,15 @@ public class Generator {
             Ghost ghost1 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
 
 
-            Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
-//        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+//            Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
+        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
 
 
-            Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
-//        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+//            Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
+        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
 
-//        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
-            Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
+        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+//            Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
 
         }
 
