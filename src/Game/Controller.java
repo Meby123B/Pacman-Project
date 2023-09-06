@@ -3,7 +3,10 @@ package Game;
     import Game.Manager.Life;
     import Game.Manager.Score;
     import GameObject.*;
+    import GameObject.Entity.Entity;
     import GameObject.Environment.Environment;
+    import GameObject.Entity.Ghost;
+    import GameObject.Entity.Player;
 
 
     import java.awt.*;
@@ -11,24 +14,32 @@ package Game;
     import java.util.LinkedList;
 
 public class Controller {
-    public static LinkedList<GameObject> allObjects = new LinkedList<>();
-    public static ArrayList<Ghost> ghosts = new ArrayList<>();
+    public static ArrayList<ArrayList<GameObject>> allObjects = new ArrayList<>();
     public static LinkedList<GameObject> toRemove = new LinkedList<>();
     private static final Player player = Player.getInstance();
 
     public static void updateAll(){
-        player.update();
-        ghosts.forEach(g -> g.update());
+        Entity.list.forEach(e -> {
+            e.update();
+            player.checkCollision(e);
+        });
 
-        allObjects.forEach(obj -> player.checkCollision(obj));
-        toRemove.forEach(obj -> allObjects.remove(obj));
+        Dot.list.forEach(d-> {
+            player.checkCollision(d);
+        });
+
+        Environment.list.forEach(env -> {
+            Entity.list.forEach(entity -> {
+                entity.checkCollision(env);
+            });
+        });
+        toRemove.forEach(obj -> allObjects.forEach(list -> list.remove(obj)));
 
     }
     public static void drawAll(Graphics2D g2){
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
-        Environment.list.forEach(e -> e.draw(g2));
+        allObjects.forEach(list -> list.forEach(obj -> obj.draw(g2)) );
         Wall.list.forEach(wall ->  wall.draw(g2));
-        allObjects.forEach(obj -> obj.draw(g2));
         Score.draw(g2);
         Life.draw(g2);
     }

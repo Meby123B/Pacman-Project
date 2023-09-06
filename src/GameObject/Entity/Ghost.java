@@ -1,19 +1,23 @@
-package GameObject;
+package GameObject.Entity;
 
 import Game.Controller;
+import GameObject.*;
 
 import java.awt.*;
 
-public class Ghost extends GameObject implements  Movable, Eatable{
+public class Ghost extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
         this.x = x;
         this.y = y;
         this.color = color;
+
+        Entity.list.add(this);
     }
+    @Override
     public void update() {
-        System.out.println("g:dir " + direction);
+//        System.out.println("g:dir " + direction); //D🪲
         if (direction == null){
             direction = Ai.getDirection();
         }

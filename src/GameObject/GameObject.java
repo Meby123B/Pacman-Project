@@ -1,6 +1,8 @@
 package GameObject;
 
 import GameObject.Environment.Environment;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
 
 import java.awt.*;
 
@@ -10,7 +12,7 @@ public abstract class GameObject {
     protected int x,y;
     protected int width = tileSize;
     protected int height = tileSize;
-    Color color = Color.GRAY;
+    protected Color color = Color.GRAY;
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
@@ -78,4 +80,6 @@ public abstract class GameObject {
     }
 
 
+    public void update() {
+    }
 }

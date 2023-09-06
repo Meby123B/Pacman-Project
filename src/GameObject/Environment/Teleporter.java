@@ -1,6 +1,8 @@
 package GameObject.Environment;
 
 import GameObject.*;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
 
 import java.awt.*;
 

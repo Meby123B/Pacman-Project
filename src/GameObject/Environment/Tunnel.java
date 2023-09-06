@@ -2,6 +2,8 @@
 package GameObject.Environment;
 
 import GameObject.*;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
 
 import java.awt.*;
 
@@ -20,12 +22,13 @@ public class Tunnel extends GameObject {
 
     @Override
     public void collideWithPlayer(Player p) {
+        System.out.println("now you going to slow down!!");
 
     }
 
     @Override
     public void collideWithGhost(Ghost g) {
-//        g. //todo
+
     }
 
     @Override

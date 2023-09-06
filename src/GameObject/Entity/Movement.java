@@ -1,5 +1,7 @@
-package GameObject;
+package GameObject.Entity;
 
+
+import GameObject.*;
 
 public class Movement {
     static int objSpeed;

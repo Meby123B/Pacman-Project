@@ -3,10 +3,14 @@ package GameObject;
 import Game.Controller;
 import Game.Manager.Score;
 import Game.ScreenSettings;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Dot extends GameObject implements Collectable{
+    public static ArrayList<GameObject> list = new ArrayList<>();
     int value;
     public Dot(int x, int y){
         int tileSize = ScreenSettings.tileSize;

@@ -1,6 +1,8 @@
 package GameObject;
 
 import Game.ScreenSettings;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
 
 import java.awt.*;
 import java.util.ArrayList;

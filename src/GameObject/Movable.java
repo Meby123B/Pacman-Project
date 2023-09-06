@@ -1,5 +1,7 @@
 package GameObject;
 
+import GameObject.Entity.MoveSides;
+
 public interface Movable {
 
     void move(MoveSides dir);

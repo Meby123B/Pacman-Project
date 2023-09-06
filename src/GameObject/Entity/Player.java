@@ -1,13 +1,14 @@
-package GameObject;
+package GameObject.Entity;
 
 import Game.Controller;
 import Game.KeyHandler;
 import Game.Manager.Life;
 import Game.ScreenSettings;
+import GameObject.*;
 
 import java.awt.*;
 
-public class Player extends GameObject implements Movable, Eatable{
+public class Player extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
     int life;
@@ -23,6 +24,7 @@ public class Player extends GameObject implements Movable, Eatable{
             p.x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
             p.color = Color.YELLOW;
 
+            Entity.list.add(p);
             instance = p;
             return p;
         }
@@ -42,6 +44,7 @@ public class Player extends GameObject implements Movable, Eatable{
             changeDirection(MoveSides.RIGHT);
         }
     }
+    @Override
     public void update() {
         if (life <=0) {return;}
 //        System.out.println(direction); //D🪲

@@ -11,7 +11,7 @@ public class Score {
     }
     public static void increase(int addition) {
         amount += addition;
-        System.out.println(amount); // D🪲
+//        System.out.println(amount); // D🪲
     }
 
     public static void reset() {

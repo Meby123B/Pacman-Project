@@ -1,5 +1,7 @@
 package GameObject;
 
+import GameObject.Entity.MoveSides;
+
 import java.util.Random;
 
 public class Ai {

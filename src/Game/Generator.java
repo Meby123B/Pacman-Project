@@ -1,9 +1,10 @@
 package Game;
 
 import GameObject.*;
-import GameObject.Environment.EmptyZone;
-import GameObject.Environment.Teleporter;
-import GameObject.Environment.Tunnel;
+import GameObject.Entity.Entity;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.Player;
+import GameObject.Environment.*;
 
 import java.awt.*;
 import java.util.Random;
@@ -81,76 +82,86 @@ public class Generator {
 
     private static void generateDots() {
 
-        Random rand = new Random();
         int x, y;
         Dot dot;
 
-        for (int i = 0; i < 200; i++) {
-            x = rand.nextInt(ScreenSettings.maxScreenCol);
-            y = rand.nextInt(ScreenSettings.maxScreenRow);
+        for (x = 0; x < ScreenSettings.maxScreenCol; x++) {
+            for (y = 0; y < ScreenSettings.maxScreenRow; y++) {
+                    
+                dot = new Dot(x * ts, y * ts);
+                if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
+                    System.out.println("aya!"); //D🪲 happened?
+                    continue;
+                }
+                Dot.list.add(dot);
 
-            dot = new Dot(x * ts, y * ts);
-            if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
-//                System.out.println("aya!"); //D🪲 happened?
-                i--;
-                continue;
+                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
             }
-            Controller.allObjects.add(dot);
-            System.out.println(Controller.allObjects.size()); //D🪲 check how many dots generated
+        }
+//        Random rand = new Random();
+//        int x, y;
+//        Dot dot;
+//
+//        for (int i = 0; i < 200; i++) {
+////            x = rand.nextInt(ScreenSettings.maxScreenCol);
+////            y = rand.nextInt(ScreenSettings.maxScreenRow);
+//
+//            dot = new Dot(x * ts, y * ts);
+//            if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
+//                System.out.println("aya!"); //D🪲 happened?
+//                i--;
+//                continue;
+//            }
+//            Dot.list.add(dot);
+//
+//
+//            System.out.println(Dot.list.size()); //D🪲 check how many dots generated
+//        }
+
         }
 
-    }
+        private static void generateEntity () {
 
-    private static void generateEntity() {
+            Player player = Player.getInstance();
 
-        Player player = Player.getInstance();
+            Ghost ghost1 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
 
 
-        Controller.allObjects.add(player);
-
-        Ghost ghost1 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
-        Controller.allObjects.add(ghost1);
-        Controller.ghosts.add(ghost1);
-
-        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
+            Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
 //        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
-        Controller.allObjects.add(ghost2);
-        Controller.ghosts.add(ghost2);
 
-        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
+
+            Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
 //        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
-        Controller.allObjects.add(ghost3);
-        Controller.ghosts.add(ghost3);
 
 //        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
-        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
-        Controller.allObjects.add(ghost4);
-        Controller.ghosts.add(ghost4);
+            Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
 
+        }
 
+        private static void generateEnvironments () {
+            new EmptyZone(ts * 7, ts * 9, ts * 14, ts * 11);
+            new Tunnel(0, ts * 14, 6 * ts, ts);
+            new Tunnel(scrWidth - 6 * ts, ts * 14, 6 * ts, ts);
+
+            //teleporters
+            new Teleporter(-ts - (ts / 2), ts * 14,
+                    ScreenSettings.width - ts / 2, ts * 14);
+
+            new Teleporter(ScreenSettings.width + (ts / 2), ts * 14,
+                    -(ts / 2), ts * 14);
+
+        }
+
+        public static void generateAll () {
+
+            generateWalls();
+            generateEnvironments();
+            generateDots();
+            generateEntity();
+
+            Controller.allObjects.add(Environment.list);
+            Controller.allObjects.add(Dot.list);
+            Controller.allObjects.add(Entity.list);
+        }
     }
-
-    private static void generateEnvironments() {
-        new EmptyZone(ts*7,ts*9,ts*14,ts*11);
-        new Tunnel(0, ts*14, 6*ts,ts);
-        new Tunnel(scrWidth-6*ts, ts*14, 6*ts,ts);
-
-        //teleporters
-        Teleporter teleporter = new Teleporter(-ts - (ts / 2), ts * 14,
-                ScreenSettings.width - ts / 2, ts * 14);
-
-        Teleporter teleporter2 = new Teleporter(ScreenSettings.width + (ts / 2), ts * 14,
-                -(ts / 2), ts * 14);
-
-        Controller.allObjects.add(teleporter);
-        Controller.allObjects.add(teleporter2);
-    }
-
-    public static void generateAll() {
-
-        generateWalls();
-        generateEnvironments();
-        generateDots();
-        generateEntity();
-    }
-}
