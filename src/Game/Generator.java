@@ -90,12 +90,12 @@ public class Generator {
 
                 dot = new Dot(x * ts, y * ts);
                 if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
-                    System.out.println("aya!"); //D🪲 happened?
+//                    System.out.println("aya!"); //D🪲 happened?
                     continue;
                 }
                 Dot.list.add(dot);
 
-                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
+//                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
             }
         }
 //        Random rand = new Random();

@@ -2,6 +2,7 @@ package Game;
 
     import Game.Manager.Life;
     import Game.Manager.Score;
+    import Game.Manager.Timer;
     import GameObject.*;
     import GameObject.Entity.Entity;
     import GameObject.Environment.Environment;
@@ -32,6 +33,8 @@ public class Controller {
                 entity.checkCollision(env);
             });
         });
+
+        Timer.list.forEach(timer -> timer.countDown());
         toRemove.forEach(obj -> allObjects.forEach(list -> list.remove(obj)));
 
     }

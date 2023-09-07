@@ -1,6 +1,8 @@
 package GameObject.Entity;
 
 import Game.Controller;
+import Game.Manager.GameManager;
+import Game.Manager.Timer;
 import Game.ScreenSettings;
 import GameObject.Eatable;
 import GameObject.Movable;
@@ -11,7 +13,6 @@ import java.awt.*;
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     int speed = 2;
     boolean getOut= true;
-    int time= 22;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
         this.x = x;
@@ -28,9 +29,8 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         if (direction == null){
             direction = Ai.getDirection();
         }
-        if (getOut && time >=0){
+        if (getOut){
             exit();
-            time--;
         }
         move(direction);
     }
@@ -49,7 +49,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public int getSpeed() {
-        return speed;
+        return GameManager.gameMode.ghostSpeed();
     }
 
     @Override
@@ -70,6 +70,11 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     }
 
     public void exit() {
+        if (y <= ScreenSettings.tileSize *11) {
+            getOut = false;
+            return;
+        }
+
         Movement.moveThroughWall(this, MoveSides.UP);
     }
 }
