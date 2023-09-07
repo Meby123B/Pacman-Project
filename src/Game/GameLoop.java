@@ -2,7 +2,7 @@ package Game;
 
 
 public class GameLoop {
-    static private final int FPS = 60;
+    static public final int FPS = 60;
     static private final double  drawInterval = (double) 1000000000 /FPS;
     static private double delta = 0;
     static private long lastTime = System.nanoTime();

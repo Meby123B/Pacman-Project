@@ -160,6 +160,7 @@ public class Generator {
             generateDots();
             generateEntity();
 
+
             Controller.allObjects.add(Environment.list);
             Controller.allObjects.add(Dot.list);
             Controller.allObjects.add(Entity.list);
