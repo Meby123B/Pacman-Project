@@ -10,7 +10,7 @@ public class Level3 implements Level{
     }
 
     @Override
-    public void handleAiDifficult() { //todo
+    public void handleAiDifficulty() { //todo
 
     }
 

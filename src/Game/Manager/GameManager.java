@@ -10,6 +10,7 @@ import GameObject.Entity.Player;
 public class GameManager {
     public static Level level;
     public static Mode gameMode = new BlueMode();
+//    public static Mode gameMode = new NormalMode();
 
     public static void resetPositions(){
         Entity.list.forEach(obj -> obj.resetPosition());

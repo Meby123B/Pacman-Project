@@ -13,8 +13,19 @@ import java.awt.*;
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     int speed = 2;
     boolean getOut= true;
+    Ai ai;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
+        this.x = x;
+        this.y = y;
+        this.color = color;
+
+        super.setOriginalPos(x,y);
+
+        Entity.list.add(this);
+    }
+    public Ghost(int x, int y, Color color, Ai ai){//todo
+        this.ai = ai;
         this.x = x;
         this.y = y;
         this.color = color;
@@ -27,7 +38,8 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     public void update() {
 //        System.out.println("g:dir " + direction); //D🪲
         if (direction == null){
-            direction = Ai.getDirection();
+            direction = GameManager.gameMode.
+                    getGhostAi(this).getDirection(); //todo AI make it interface
         }
         if (getOut){
             exit();
@@ -35,8 +47,8 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         move(direction);
     }
     public void collideWithPlayer(Player p){
-        p.whenEaten();
-        this.whenEaten();
+        GameManager.gameMode
+                .whenGhostEaten(this).whenEaten();
     }
 
     @Override
@@ -49,7 +61,8 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public int getSpeed() {
-        return GameManager.gameMode.ghostSpeed();
+        return GameManager.gameMode
+                .ghostSpeed();
     }
 
     @Override
@@ -65,8 +78,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     @Override
     public void whenEaten() {
         setDirection(null);
-        Controller.resetEntities();
-//        this.resetPosition();
+        this.resetPosition();
     }
 
     public void exit() {
@@ -76,5 +88,20 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         }
 
         Movement.moveThroughWall(this, MoveSides.UP);
+    }
+
+    public void setOut() {
+        this.getOut = true;
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        g2.setColor(GameManager.gameMode
+                .getGhostColor(this));
+        g2.fillRect(x,y,width,height);
+    }
+
+    public Ai getAi() {
+        return this.ai;
     }
 }

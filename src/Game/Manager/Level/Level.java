@@ -2,9 +2,8 @@ package Game.Manager.Level;
 
 public interface  Level {
      int getNum();
-     void handleAiDifficult(); //todo type?
+     void handleAiDifficulty(); //todo type?
      int timeForBlueMode();
      int timeForFruit();
-
 
 }

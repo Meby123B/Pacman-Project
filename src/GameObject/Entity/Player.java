@@ -83,7 +83,7 @@ public class Player extends GameObject implements Movable, Eatable {
 
     private void loseLife(){
         Life.lose();
-        resetPosition();
+        Controller.resetEntities();
         if (Life.getLife() <= 0){gameover();}
     }
     private void gameover(){

@@ -5,6 +5,7 @@ package Game;
     import Game.Manager.Timer;
     import GameObject.*;
     import GameObject.Entity.Entity;
+    import GameObject.Entity.Ghost;
     import GameObject.Environment.Environment;
     import GameObject.Entity.Player;
 
@@ -74,6 +75,11 @@ public class Controller {
 
     public static void resetEntities() {
         GameLoop.waitFrames(180);
-        Entity.list.forEach(obj -> obj.resetPosition());
+        Entity.list.forEach(obj -> {
+            obj.resetPosition();
+            if (obj instanceof Ghost) {
+                ((Ghost) obj).setOut();
+            }
+        });
     }
 }
