@@ -9,7 +9,7 @@ import GameObject.Entity.Player;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Dot extends GameObject implements Collectable{
+public class Dot extends GameObject implements Collectable, Clickable{
     public static ArrayList<GameObject> list = new ArrayList<>();
     int value;
     public Dot(int x, int y){
@@ -38,4 +38,8 @@ public class Dot extends GameObject implements Collectable{
         Controller.removeObj(this);
     }
 
+    @Override
+    public void whenClicked() {
+        collect();
+    }
 }

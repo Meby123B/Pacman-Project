@@ -159,7 +159,7 @@ public class Generator {
             generateEnvironments();
             generateDots();
             generateEntity();
-
+            Entity.list.add(new Mouse());
 
             Controller.allObjects.add(Environment.list);
             Controller.allObjects.add(Dot.list);
