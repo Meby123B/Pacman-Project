@@ -6,7 +6,7 @@ import Game.GameLoop;
 public class Level3 implements Level{
     @Override
     public int getNum() {
-        return 1;
+        return 3;
     }
 
     @Override
