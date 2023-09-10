@@ -1,13 +1,15 @@
 package Game;
 
 import GameObject.*;
+import GameObject.Collectables.Collectim;
+import GameObject.Collectables.Dot;
+import GameObject.Collectables.PowerDot;
 import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
 import GameObject.Entity.Player;
 import GameObject.Environment.*;
 
 import java.awt.*;
-import java.util.Random;
 
 public class Generator {
     static int ts = ScreenSettings.tileSize;
@@ -80,7 +82,7 @@ public class Generator {
         new Wall(0, scrHeight - ts, scrWidth, ts); //bottom
     }
 
-    private static void generateDots() {
+    private static void generateCollectables() {
 
         int x, y;
         Dot dot;
@@ -89,15 +91,21 @@ public class Generator {
             for (y = 0; y < ScreenSettings.maxScreenRow; y++) {
 
                 dot = new Dot(x * ts, y * ts);
-                if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
+                if (Collision.isCollideWithWall(dot) || Collision.isCollideWithEnvironment(dot)) {
 //                    System.out.println("aya!"); //D🪲 happened?
                     continue;
                 }
-                Dot.list.add(dot);
+                Collectim.list.add(dot);
 
 //                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
             }
         }
+
+        new PowerDot(1*ts,3*ts);
+        new PowerDot(26*ts, 3*ts);
+        new PowerDot(1*ts,23*ts);
+        new PowerDot(26*ts,23*ts);
+
 //        Random rand = new Random();
 //        int x, y;
 //        Dot dot;
@@ -157,12 +165,12 @@ public class Generator {
 
             generateWalls();
             generateEnvironments();
-            generateDots();
+            generateCollectables();
             generateEntity();
             Entity.list.add(new Mouse());
 
             Controller.allObjects.add(Environment.list);
-            Controller.allObjects.add(Dot.list);
+            Controller.allObjects.add(Collectim.list);
             Controller.allObjects.add(Entity.list);
         }
     }

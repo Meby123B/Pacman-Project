@@ -19,7 +19,7 @@ public class BlueMode implements Mode{
 
     @Override
     public Ai getGhostAi(Ghost g) {
-        System.out.println("run");
+//        System.out.println("run");
         return new Ai();
 //        return Ai.runFromPlayer();//todo
     }

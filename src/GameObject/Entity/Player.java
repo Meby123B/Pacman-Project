@@ -2,6 +2,7 @@ package GameObject.Entity;
 
 import Game.Controller;
 import Game.KeyHandler;
+import Game.Manager.GameManager;
 import Game.Manager.Life;
 import Game.ScreenSettings;
 import GameObject.Eatable;
@@ -13,18 +14,19 @@ import java.awt.*;
 public class Player extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
-    int life;
 
     static Player instance;
+
+    private Player(int x, int y, Color color) {
+        super(x, y, color);
+    }
+
     public static Player getInstance(){
 
         if (instance == null){
-            Player p = new Player();
-            p.life = 3;
-            System.out.println("life: " + p.life );
-            p.y = 23*ScreenSettings.tileSize;
-            p.x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
-            p.color = Color.YELLOW;
+            int x = 13*ScreenSettings.tileSize + ScreenSettings.tileSize/2;
+            int y = 23*ScreenSettings.tileSize;
+            Player p = new Player(x,y,Color.YELLOW);
 
             p.setOriginalPos(p.x,p.y);
 
@@ -50,7 +52,7 @@ public class Player extends GameObject implements Movable, Eatable {
     }
     @Override
     public void update() {
-        if (life <=0) {return;}
+        if (Life.getLife() <=0) {return;}
 //        System.out.println(direction); //D🪲
         checkKeys();
         move(direction);

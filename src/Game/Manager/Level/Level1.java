@@ -14,12 +14,12 @@ public class Level1 implements Level{
     }
 
     @Override
-    public int timeForBlueMode() {
-        return GameLoop.FPS * 10;
+    public double timeForBlueMode() {
+        return 10.0;
     }
 
     @Override
-    public int timeForFruit() {
-        return GameLoop.FPS * 10;
+    public double timeForFruit() {
+        return 10.0;
     }
 }

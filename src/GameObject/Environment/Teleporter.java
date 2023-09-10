@@ -13,8 +13,7 @@ public class Teleporter extends GameObject {
     private int goToY;
 
     public Teleporter(int x, int y, int goToX, int goToY) {
-        this.x = x;
-        this.y = y;
+        super(x,y,null);
         this.goToX = goToX;
         this.goToY = goToY;
 

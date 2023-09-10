@@ -6,7 +6,7 @@ import GameObject.Entity.Player;
 
 import java.util.ArrayList;
 
-public class Environment extends GameObject {
+public class Environment {
     public static ArrayList<GameObject> list = new ArrayList<>();
 
 }

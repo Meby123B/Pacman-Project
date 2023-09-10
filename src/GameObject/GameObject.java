@@ -1,5 +1,6 @@
 package GameObject;
 
+import Game.ScreenSettings;
 import GameObject.Environment.Environment;
 import GameObject.Entity.Ghost;
 import GameObject.Entity.Player;
@@ -14,6 +15,16 @@ public abstract class GameObject {
     protected int height = tileSize;
     protected Color color = Color.GRAY;
     private int originalX , originalY;
+
+    public GameObject(int x, int y, Color color){
+        int tileSize = ScreenSettings.tileSize;
+
+        this.x = x ;
+        this.y = y ;
+        this.height = tileSize;
+        this.width = tileSize;
+        this.color = color;
+    }
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
@@ -40,45 +51,6 @@ public abstract class GameObject {
     public Color getColor(){return color;}
     public  void collideWithPlayer(Player p){};
     public  void collideWithGhost(Ghost g){};
-
-
-
-    public boolean checkCollision(GameObject other){
-        if (
-            getUp() <= other.getDown()
-            && getDown() >= other.getUp()
-            && getLeft() <= other.getRight()
-            && getRight() >= other.getLeft()
-        ){
-            if (this instanceof Player){
-                other.collideWithPlayer((Player)this);
-
-            } else if (this instanceof Ghost){
-                other.collideWithGhost((Ghost)this);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isCollideWithWall(){
-        for (int i = 0; i < Wall.list.size(); i++) {
-
-            if(checkCollision(Wall.list.get(i))){
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean isCollideWithEnvironment() {
-        for (int i = 0; i < Environment.list.size(); i++) {
-
-            if(checkCollision(Environment.list.get(i))){
-                return true;
-            }
-        }
-        return false;
-    }
 
 
     public void update() {

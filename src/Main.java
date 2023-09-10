@@ -6,6 +6,5 @@ public class Main {
         Window w = new Window();
         w.powerOn();
 
-
     }
 }

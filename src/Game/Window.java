@@ -1,14 +1,8 @@
 package Game;
 
-import GameObject.Clickable;
-import GameObject.Dot;
 import GameObject.Mouse;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 public class Window  {
     public void powerOn(){

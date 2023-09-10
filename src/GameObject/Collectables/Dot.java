@@ -1,31 +1,29 @@
-package GameObject;
+package GameObject.Collectables;
 
 import Game.Controller;
-import Game.Manager.GameManager;
-import Game.Manager.Mode.BlueMode;
 import Game.Manager.Score;
+import Game.Manager.Timer;
 import Game.ScreenSettings;
 import GameObject.Entity.Player;
+import GameObject.*;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PowerDot extends GameObject implements Collectable{
-    public static ArrayList<GameObject> list = new ArrayList<>();
+public class Dot extends GameObject implements Collectable, Clickable {
     int value;
-    public PowerDot(int x, int y){
+    public Dot(int x, int y){
+        super(x,y,Color.PINK);
         int tileSize = ScreenSettings.tileSize;
 
-        this.x = x ;
-        this.y = y ;
-        this.height = tileSize;
-        this.width = tileSize;
-        color = Color.green;
-        value = 50;
+        this.x = x + tileSize/4;
+        this.y = y + tileSize/4;
+        this.width = tileSize / 2;
+        this.height = tileSize / 2;
+        value = 10;
     }
     public void collideWithPlayer(Player p){
         collect();
-        GameManager.gameMode = new BlueMode();
     }
 
 
@@ -40,4 +38,8 @@ public class PowerDot extends GameObject implements Collectable{
         Controller.removeObj(this);
     }
 
+    @Override
+    public void whenClicked() {
+        collect();
+    }
 }

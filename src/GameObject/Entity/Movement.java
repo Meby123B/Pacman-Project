@@ -1,6 +1,7 @@
 package GameObject.Entity;
 
 
+import Game.Collision;
 import GameObject.GameObject;
 import GameObject.Movable;
 
@@ -14,7 +15,7 @@ public class Movement {
         extractSpeedAndDir(obj);
         moveIt(obj,dir);
 
-        if (obj.isCollideWithWall()){
+        if (Collision.isCollideWithWall(obj)){
             cancelMove(obj,dir);
             resetDirection(obj);
         }
@@ -32,7 +33,7 @@ public class Movement {
         setDirection(obj,dir);
 
         moveIt(obj,dir);
-        if (obj.isCollideWithWall()){
+        if (Collision.isCollideWithWall(obj)){
             resetDirection(obj);
         }
             cancelMove(obj,dir);

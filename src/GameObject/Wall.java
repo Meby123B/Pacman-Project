@@ -12,11 +12,10 @@ public class Wall extends GameObject {
     public static ArrayList<Wall> list = new ArrayList<>();
 
     public Wall(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
+        super(x,y,Color.BLUE);
+
         this.width = w;
         this.height = h;
-        this.color = Color.blue;
         list.add(this);
     }
 

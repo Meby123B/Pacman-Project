@@ -10,8 +10,7 @@ import java.awt.*;
 public class EmptyZone extends GameObject {
 
     public EmptyZone(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
+        super(x,y,null);
         this.width = w;
         this.height = h;
 

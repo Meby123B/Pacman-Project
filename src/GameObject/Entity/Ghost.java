@@ -11,24 +11,20 @@ import GameObject.Movable;
 import java.awt.*;
 
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
-    int speed = 2;
     boolean getOut= true;
     Ai ai;
     MoveSides direction=null;
     public Ghost(int x, int y, Color color){
-        this.x = x;
-        this.y = y;
-        this.color = color;
+        super(x,y,color);
 
         super.setOriginalPos(x,y);
 
         Entity.list.add(this);
     }
     public Ghost(int x, int y, Color color, Ai ai){//todo
+        super(x,y,color);
+
         this.ai = ai;
-        this.x = x;
-        this.y = y;
-        this.color = color;
 
         super.setOriginalPos(x,y);
 
@@ -38,7 +34,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     public void update() {
 //        System.out.println("g:dir " + direction); //D🪲
         if (direction == null){
-            direction = GameManager.gameMode.
+            direction = GameManager.getGameMode().
                     getGhostAi(this).getDirection(); //todo AI make it interface
         }
         if (getOut){
@@ -47,7 +43,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         move(direction);
     }
     public void collideWithPlayer(Player p){
-        GameManager.gameMode
+        GameManager.getGameMode()
                 .whenGhostEaten(this).whenEaten();
     }
 
@@ -61,7 +57,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public int getSpeed() {
-        return GameManager.gameMode
+        return GameManager.getGameMode()
                 .ghostSpeed();
     }
 
@@ -96,7 +92,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(GameManager.gameMode
+        g2.setColor(GameManager.getGameMode()
                 .getGhostColor(this));
         g2.fillRect(x,y,width,height);
     }

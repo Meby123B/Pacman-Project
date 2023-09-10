@@ -11,8 +11,7 @@ import java.awt.*;
 public class Tunnel extends GameObject {
 
     public Tunnel(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
+        super(x,y,null);
         this.width = w;
         this.height = h;
 
