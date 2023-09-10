@@ -1,6 +1,7 @@
 package Game.Manager;
 
 import Game.Controller;
+import Game.Generator;
 import Game.Manager.Level.*;
 import Game.Manager.Mode.*;
 import Game.ScreenSettings;
@@ -11,7 +12,7 @@ import GameObject.Entity.Entity;
 import java.awt.*;
 
 public class GameManager {
-    public static Level level = new Level3();
+    public static Level level = new Level1();
     private static Mode gameMode = new NormalMode();
 //    public static Mode gameMode = new NormalMode();
 
@@ -23,6 +24,8 @@ public class GameManager {
         return level;
     }
     public static void levelUp(){
+        Life._1Up();
+        Generator.generateCollectables();
         switch (level.getNum()){
             case 1-> level=new Level2();
             case 2-> level=new Level3();

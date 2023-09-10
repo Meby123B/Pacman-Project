@@ -44,6 +44,15 @@ public class Collision {
         }
         return false;
     }
+    public static boolean isCollideWithEntities(GameObject obj) {
+        for (int i = 0; i < Entity.list.size(); i++) {
+
+            if(check(obj, Entity.list.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void checkAll(){
         //player --> ghost

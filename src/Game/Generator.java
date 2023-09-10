@@ -82,7 +82,12 @@ public class Generator {
         new Wall(0, scrHeight - ts, scrWidth, ts); //bottom
     }
 
-    private static void generateCollectables() {
+    public static void generateCollectables() {
+
+        new PowerDot(1*ts,3*ts);
+        new PowerDot(26*ts, 3*ts);
+        new PowerDot(1*ts,23*ts);
+        new PowerDot(26*ts,23*ts);
 
         int x, y;
         Dot dot;
@@ -91,7 +96,10 @@ public class Generator {
             for (y = 0; y < ScreenSettings.maxScreenRow; y++) {
 
                 dot = new Dot(x * ts, y * ts);
-                if (Collision.isCollideWithWall(dot) || Collision.isCollideWithEnvironment(dot)) {
+                if (
+                    Collision.isCollideWithEnvironment(dot)
+                    || Collision.isCollideWithWall(dot)
+                ) {
 //                    System.out.println("aya!"); //D🪲 happened?
                     continue;
                 }
@@ -101,10 +109,7 @@ public class Generator {
             }
         }
 
-        new PowerDot(1*ts,3*ts);
-        new PowerDot(26*ts, 3*ts);
-        new PowerDot(1*ts,23*ts);
-        new PowerDot(26*ts,23*ts);
+
 
 //        Random rand = new Random();
 //        int x, y;
@@ -149,6 +154,14 @@ public class Generator {
 
         private static void generateEnvironments () {
             new EmptyZone(ts * 7, ts * 9, ts * 14, ts * 11);
+            new EmptyZone(1*ts,3*ts, ts, ts);
+            new EmptyZone(26*ts, 3*ts, ts, ts);
+            new EmptyZone(1*ts,23*ts, ts, ts);
+            new EmptyZone(26*ts,23*ts, ts, ts);
+            new EmptyZone(26*ts,23*ts, ts, ts);
+            new EmptyZone(13*ts,23*ts, ts*2, ts);
+
+
             new Tunnel(0, ts * 14, 6 * ts, ts);
             new Tunnel(scrWidth - 6 * ts, ts * 14, 6 * ts, ts);
 
@@ -165,8 +178,8 @@ public class Generator {
 
             generateWalls();
             generateEnvironments();
-            generateCollectables();
             generateEntity();
+            generateCollectables();
             Entity.list.add(new Mouse());
 
             Controller.allObjects.add(Environment.list);

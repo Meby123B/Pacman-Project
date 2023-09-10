@@ -9,7 +9,7 @@ public class Life {
     public static int getLife() {
         return amount;
     }
-    public  void _1Up() {
+    public static void _1Up() {
         amount += 1;
 //        System.out.println(amount); // D🪲
     }
