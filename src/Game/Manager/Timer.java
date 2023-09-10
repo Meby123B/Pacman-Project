@@ -10,27 +10,24 @@ public class Timer {
     public static ArrayList<Timer> list = new ArrayList<>();
 
     private int count;
+    private int startCount;
     private String name;
     private Callable callAtEnd;
     private boolean pause = false;
 
     public Timer(int frames) {
+        startCount = frames;
         this.count = frames;
-        list.add(this);
-    }
-    public Timer(double seconds) {
-        this.count = (int) (seconds * GameLoop.FPS);
-        list.add(this);
-    }
-    public Timer(double seconds, Callable callback) {
-        this.count = (int) (seconds * GameLoop.FPS);
-        this.callAtEnd = callback;
         list.add(this);
     }
     public Timer(int frames, Callable callback) {
+        startCount = frames;
         this.count = frames;
         this.callAtEnd = callback;
         list.add(this);
+    }
+    public static int secondToFrames(double seconds){
+        return (int) (seconds * GameLoop.FPS);
     }
 
     public int timeLeft() {
@@ -46,7 +43,7 @@ public class Timer {
 
         if (timesUp() && callAtEnd != null) {
             callAtEnd.callBack();
-            Controller.removeTimer(this);
+            pause();
             return;
         }
 
@@ -60,6 +57,10 @@ public class Timer {
     }
     public void delete() {
         list.remove(this);
+    }
+    public void reset() {
+        this.count = startCount;
+        resume();
     }
 
 }

@@ -2,18 +2,19 @@ package GameObject.Collectables;
 
 import Game.Controller;
 import Game.Manager.GameManager;
-import Game.Manager.Mode.BlueMode;
 import Game.Manager.Score;
 import Game.Manager.Timer;
-import Game.ScreenSettings;
 import GameObject.Entity.Player;
 import GameObject.*;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class PowerDot extends GameObject implements Collectable, Callable {
     int value;
+    private static final int timeInSeconds = Timer.secondToFrames(
+            GameManager.level.timeForBlueMode()
+    );
+    private static Timer blueModeTimer;
     public PowerDot(int x, int y){
         super(x,y,Color.green);
 
@@ -22,6 +23,7 @@ public class PowerDot extends GameObject implements Collectable, Callable {
     }
     public void collideWithPlayer(Player p){
         collect();
+
         GameManager.setBlueMode();
     }
 
@@ -34,8 +36,16 @@ public class PowerDot extends GameObject implements Collectable, Callable {
     @Override
     public void collect() {
         Score.increase(value);
-        new Timer(GameManager.level.timeForBlueMode(), this);
+        setTimer();
         Controller.removeObj(this);
+    }
+
+    private void setTimer() {
+        if (blueModeTimer == null){
+            blueModeTimer = new Timer(timeInSeconds,this);
+        } else {
+            blueModeTimer.reset();
+        }
     }
 
     @Override

@@ -17,12 +17,8 @@ public abstract class GameObject {
     private int originalX , originalY;
 
     public GameObject(int x, int y, Color color){
-        int tileSize = ScreenSettings.tileSize;
-
         this.x = x ;
         this.y = y ;
-        this.height = tileSize;
-        this.width = tileSize;
         this.color = color;
     }
 
