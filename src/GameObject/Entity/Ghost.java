@@ -1,8 +1,6 @@
 package GameObject.Entity;
 
-import Game.Controller;
 import Game.Manager.GameManager;
-import Game.Manager.Timer;
 import Game.ScreenSettings;
 import GameObject.Eatable;
 import GameObject.Movable;
@@ -32,6 +30,12 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     }
     @Override
     public void update() {
+        if (color == Color.red){
+            Ai.priority(this);
+//            System.out.println(Ai.calculateDistance(this, MoveSides.RIGHT));
+
+        }
+
 //        System.out.println("g:dir " + direction); //D🪲
         if (direction == null){
             direction = GameManager.getGameMode().

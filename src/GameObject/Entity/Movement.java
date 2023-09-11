@@ -36,7 +36,7 @@ public class Movement {
         if (Collision.isCollideWithWall(obj)){
             resetDirection(obj);
         }
-            cancelMove(obj,dir);
+        cancelMove(obj,dir);
     }
 
     private static void extractSpeedAndDir(GameObject obj){

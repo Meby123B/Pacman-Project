@@ -26,10 +26,30 @@ public class Collision {
         }
         return false;
     }
+    public static boolean check(int objUp, int objLeft, int objRight, int objDown,  GameObject other){
+        if (
+                objUp <= other.getDown()
+                && objDown >= other.getUp()
+                && objLeft <= other.getRight()
+                && objRight >= other.getLeft()
+        ) {
+            return true;
+        }
+        else return false;
+    }
     public static boolean isCollideWithWall(GameObject obj){
         for (int i = 0; i < Wall.list.size(); i++) {
 
             if(check(obj, Wall.list.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean isCollideWithWall(int objUp, int objLeft, int objRight, int objDown){
+        for (int i = 0; i < Wall.list.size(); i++) {
+
+            if(check(objUp, objLeft, objRight, objDown, Wall.list.get(i))){
                 return true;
             }
         }
