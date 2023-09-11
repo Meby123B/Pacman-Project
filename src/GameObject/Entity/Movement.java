@@ -38,6 +38,19 @@ public class Movement {
         }
         cancelMove(obj,dir);
     }
+    public static boolean checkDirection(GameObject obj, MoveSides dir){
+        if (dir == null) return false;
+        boolean result = true;
+
+        extractSpeedAndDir(obj);
+
+        moveIt(obj,dir);
+        if (Collision.isCollideWithWall(obj)){
+            result = false;
+        }
+        cancelMove(obj,dir);
+        return result;
+    }
 
     private static void extractSpeedAndDir(GameObject obj){
         objSpeed = ((Movable)obj).getSpeed();

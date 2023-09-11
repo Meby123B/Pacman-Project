@@ -30,17 +30,18 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     }
     @Override
     public void update() {
-        if (color == Color.red){
-            Ai.priority(this);
+//        if (color == Color.red){
+//            Ai.priority(this);
 //            System.out.println(Ai.calculateDistance(this, MoveSides.RIGHT));
-
-        }
+//
+//        }
+        direction = Ai.priority(this);
 
 //        System.out.println("g:dir " + direction); //D🪲
-        if (direction == null){
-            direction = GameManager.getGameMode().
-                    getGhostAi(this).getDirection(); //todo AI make it interface
-        }
+//        if (direction == null){
+//            direction = GameManager.getGameMode().
+//                    getGhostAi(this).getDirection(); //todo AI make it interface
+//        }
         if (getOut){
             exit();
         }

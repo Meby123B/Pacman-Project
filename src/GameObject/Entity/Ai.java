@@ -27,6 +27,8 @@ public class Ai {
     public  MoveSides goTo(int x, int y) {
         return null;
     }
+
+
     public static MoveSides priority(Ghost ghost){
         checkAvailableDirections(ghost);
 
@@ -40,7 +42,13 @@ public class Ai {
         if (right) {
             dirResult = compareDistances(ghost,dirResult,  MoveSides.RIGHT);}
 
-        System.out.println("finish: "+ dirResult);
+        System.out.println("------------");
+        System.out.println("up: "+up);
+        System.out.println("down: "+down);
+        System.out.println("left: "+left);
+        System.out.println("right: "+right);
+        System.out.println("FINISH: "+ dirResult);
+        System.out.println("------------");
         line =10000.0;
         return dirResult;
 
@@ -49,16 +57,14 @@ public class Ai {
     private static void checkAvailableDirections(Ghost ghost) {
         MoveSides lastDir = ghost.getDirection();
 
-        up = checkDir(ghost, MoveSides.UP);
-        System.out.println("up: "+up);
-        down = checkDir(ghost, MoveSides.DOWN);
-        System.out.println("down: "+down);
-        left = checkDir(ghost, MoveSides.LEFT);
-        System.out.println("left: "+left);
-        right = checkDir(ghost, MoveSides.RIGHT);
-        System.out.println("right: "+right);
+
+        up = Movement.checkDirection(ghost, MoveSides.UP);
+        down = Movement.checkDirection(ghost, MoveSides.DOWN);
+        left = Movement.checkDirection(ghost, MoveSides.LEFT);
+        right = Movement.checkDirection(ghost, MoveSides.RIGHT);
 
         if (lastDir == null) return;
+
 
         switch (lastDir){
             case UP ->  down=false;
@@ -66,9 +72,10 @@ public class Ai {
             case LEFT -> right=false;
             case RIGHT -> left=false;
         }
+
     }
     private static boolean checkDir(Ghost ghost, MoveSides dir){
-        int x = ghost.getX(); //todo change it to gotoX
+        int x = ghost.getX();
         int y = ghost.getY();
 
         int ts = ScreenSettings.tileSize;
@@ -100,7 +107,7 @@ public class Ai {
     }
 
     public static double calculateDistance(Ghost ghost, MoveSides dir){
-        int x = ghost.getX(); //todo change it to gotoX
+        int x = ghost.getX();
         int y = ghost.getY();
         //move one step
         int ts = ScreenSettings.tileSize;
@@ -111,7 +118,7 @@ public class Ai {
             case RIGHT -> x += ts;
         }
         // calculate distance
-        int w = Math.abs(Player.getInstance().getX() - x);
+        int w = Math.abs(Player.getInstance().getX() - x); //todo change it to gotoX
         int h = Math.abs(Player.getInstance().getY() - y);
         return Math.sqrt((w*w) + (h*h));
     }
