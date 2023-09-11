@@ -3,6 +3,7 @@ package GameObject.Entity;
 import Game.Manager.GameManager;
 import Game.ScreenSettings;
 import GameObject.Eatable;
+import GameObject.Entity.Ai.Ai;
 import GameObject.Movable;
 //import GameObject.*;
 
@@ -12,30 +13,21 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     boolean getOut= true;
     Ai ai;
     MoveSides direction=null;
+
     public Ghost(int x, int y, Color color){
+
         super(x,y,color);
-
         super.setOriginalPos(x,y);
-
         Entity.list.add(this);
     }
-    public Ghost(int x, int y, Color color, Ai ai){//todo
-        super(x,y,color);
 
+    public void setAi(Ai ai) {
         this.ai = ai;
-
-        super.setOriginalPos(x,y);
-
-        Entity.list.add(this);
     }
+
     @Override
     public void update() {
-//        if (color == Color.red){
-//            Ai.priority(this);
-//            System.out.println(Ai.calculateDistance(this, MoveSides.RIGHT));
-//
-//        }
-        direction = Ai.getDirection(this);
+        direction = GameManager.getGameMode().getGhostAi(this).getDirection(this);
 
 //        System.out.println("g:dir " + direction); //D🪲
 //        if (direction == null){

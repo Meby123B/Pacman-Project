@@ -1,16 +1,22 @@
 package GameObject.Entity;
 
 import Game.ScreenSettings;
+import GameObject.Entity.Ai.Blinky;
+import GameObject.Entity.Ai.Pinky;
 
 import java.awt.*;
 
 public class GhostFactory {
     private static int ts = ScreenSettings.tileSize;
     public static Ghost makeBlinky(){
-        return new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
+        Ghost ghost =new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
+        ghost.setAi( new Blinky(ghost));
+        return ghost;
     }
     public static Ghost makePinky(){
-        return new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+        Ghost ghost = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+        ghost.setAi( new Pinky(ghost));
+        return ghost;
     }
     public static Ghost makeInky(){
         return new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);

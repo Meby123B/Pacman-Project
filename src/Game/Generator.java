@@ -6,6 +6,7 @@ import GameObject.Collectables.Dot;
 import GameObject.Collectables.PowerDot;
 import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
+import GameObject.Entity.GhostFactory;
 import GameObject.Entity.Player;
 import GameObject.Environment.*;
 
@@ -136,11 +137,12 @@ public class Generator {
         private static void generateEntity () {
 
             Player player = Player.getInstance();
-
-            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
-            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
-            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
-            new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+            GhostFactory.makeBlinky();
+            GhostFactory.makePinky();
+//            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
+//            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+//            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+//            new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
         }
 
         private static void generateEnvironments () {

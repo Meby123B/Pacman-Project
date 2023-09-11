@@ -1,9 +1,8 @@
 package Game.Manager.Mode;
 
-import GameObject.Entity.Ai;
+import GameObject.Entity.Ai.Ai;
 import GameObject.Entity.Ghost;
 import GameObject.Eatable;
-import GameObject.GameObject;
 
 import java.awt.*;
 
@@ -20,7 +19,7 @@ public class BlueMode implements Mode{
     @Override
     public Ai getGhostAi(Ghost g) {
 //        System.out.println("run");
-        return new Ai();
+        return new GameObject.Entity.Ai.BlueMode(g);
 //        return Ai.runFromPlayer();//todo
     }
 

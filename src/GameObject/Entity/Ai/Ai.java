@@ -1,18 +1,31 @@
-package GameObject.Entity;
+package GameObject.Entity.Ai;
 
 
 import Game.Collision;
 import Game.ScreenSettings;
+import GameObject.Entity.Ghost;
+import GameObject.Entity.MoveSides;
+import GameObject.Entity.Movement;
+import GameObject.Entity.Player;
 
 import java.util.Random;
 
-public class Ai {
-    static int goToX, goToY;
-    static double line=100000.0;
-    static boolean up,down,left,right;
-    private static Ghost ghost;
+public abstract class Ai {
+    int goToX, goToY;
+    double line=100000.0;
+    boolean up,down,left,right;
+    protected Ghost ghost;
 
-    public static MoveSides getRandomDir() {
+    public Ai(Ghost ghost){
+        this.ghost=ghost;
+    }
+
+    public MoveSides getRandomDir(Ghost ghost) {
+        setGhost(ghost); //todo remove after make ai not
+        if (ghost.getDirection() == null) {
+            return ghost.getDirection();
+        }
+
         MoveSides newDir = null;
 
         Random rand = new Random();
@@ -26,18 +39,14 @@ public class Ai {
         return newDir;
     }
 
-    public static void setGoTo() {
-
-        goToX = Player.getInstance().getX();
-        goToY = Player.getInstance().getY();
-    }
+    public abstract void setGoTo();
 
 
-    public static MoveSides getDirection(Ghost ghost){
-        MoveSides newDirection =null;
+    public MoveSides getDirection(Ghost ghost){
+        MoveSides newDirection = null;
 
         setGoTo();
-        setGhost(ghost); //todo remove after make ai not static
+//        setGhost(ghost); //todo remove after make ai not
         checkAvailableDirections();
         newDirection = getPriority(newDirection);
 
@@ -45,11 +54,11 @@ public class Ai {
 
     }
 
-    private static void setGhost(Ghost g) {
+    private void setGhost(Ghost g) {
         ghost = g;
     }
 
-    private static MoveSides getPriority(MoveSides newDirection) {
+    private MoveSides getPriority(MoveSides newDirection) {
         if (up) {
             newDirection = compareDistances(ghost, newDirection,  MoveSides.UP);}
         if (left) {
@@ -63,7 +72,7 @@ public class Ai {
         return newDirection;
     }
 
-    private static void checkAvailableDirections() {
+    private void checkAvailableDirections() {
         MoveSides lastDir = ghost.getDirection();
 
         up = Movement.checkDirection(ghost, MoveSides.UP);
@@ -81,7 +90,7 @@ public class Ai {
         }
 
     }
-    private static boolean checkDir(Ghost ghost, MoveSides dir){
+    private boolean checkDir(Ghost ghost, MoveSides dir){
         int x = ghost.getX();
         int y = ghost.getY();
 
@@ -95,7 +104,7 @@ public class Ai {
         return !(Collision.isCollideWithWall(y, x, x + ts, y + ts));
     }
 
-    private static MoveSides compareDistances(Ghost ghost, MoveSides originalDir, MoveSides newDir) {
+    private MoveSides compareDistances(Ghost ghost, MoveSides originalDir, MoveSides newDir) {
         double lineTemp = calculateDistance(ghost, newDir);
         if (lineTemp < line){
             line = lineTemp;
@@ -104,7 +113,7 @@ public class Ai {
         return originalDir;
     }
 
-    private static int numOfOptions() {
+    private int numOfOptions() {
         int num =0;
         if (up) num++;
         if (down) num++;
@@ -113,7 +122,7 @@ public class Ai {
         return num;
     }
 
-    public static double calculateDistance(Ghost ghost, MoveSides dir){
+    public double calculateDistance(Ghost ghost, MoveSides dir){
         int x = ghost.getX();
         int y = ghost.getY();
         //move one step

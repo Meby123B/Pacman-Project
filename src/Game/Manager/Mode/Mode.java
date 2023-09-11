@@ -1,9 +1,8 @@
 package Game.Manager.Mode;
 
-import GameObject.Entity.Ai;
+import GameObject.Entity.Ai.Ai;
 import GameObject.Entity.Ghost;
 import GameObject.Eatable;
-import GameObject.GameObject;
 
 import java.awt.*;
 
