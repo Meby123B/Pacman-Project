@@ -14,7 +14,6 @@ import java.awt.*;
 public class Player extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
-
     static Player instance;
 
     private Player(int x, int y, Color color) {
