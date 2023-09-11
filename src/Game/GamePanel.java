@@ -1,5 +1,6 @@
 package Game;
 
+import Game.Manager.GameManager;
 import GameObject.*;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     public GamePanel() {
-        Generator.generateAll();
+        GameManager.newGame();
 
         this.setPreferredSize(new Dimension(ScreenSettings.width, ScreenSettings.height+50));
         this.setBackground(Color.black);

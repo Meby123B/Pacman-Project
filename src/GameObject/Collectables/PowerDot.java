@@ -12,7 +12,7 @@ import java.awt.*;
 public class PowerDot extends GameObject implements Collectable, Callable {
     int value;
     private static final int timeInSeconds = Timer.secondToFrames(
-            GameManager.level.timeForBlueMode()
+            GameManager.getLevel().timeForBlueMode()
     );
     private static Timer blueModeTimer;
     public PowerDot(int x, int y){

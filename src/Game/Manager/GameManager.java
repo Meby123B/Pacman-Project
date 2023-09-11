@@ -12,9 +12,8 @@ import GameObject.Entity.Entity;
 import java.awt.*;
 
 public class GameManager {
-    public static Level level = new Level1();
-    private static Mode gameMode = new NormalMode();
-//    public static Mode gameMode = new NormalMode();
+    private static Level level;
+    private static Mode gameMode;
 
     public static void resetPositions(){
         Entity.list.forEach(obj -> obj.resetPosition());
@@ -23,12 +22,18 @@ public class GameManager {
     public static Level getLevel(){
         return level;
     }
+    public static void newGame() {
+        gameMode = new NormalMode();
+        level = new Level1();
+        Generator.generateAll();
+    }
     public static void levelUp(){
         Life._1Up();
         Generator.generateCollectables();
         switch (level.getNum()){
             case 1-> level=new Level2();
             case 2-> level=new Level3();
+            case 3-> System.out.println("You win!"); //todo win screen
         }
     }
     public static void checkFinishLevel(){
