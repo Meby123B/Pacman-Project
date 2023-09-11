@@ -137,22 +137,14 @@ public class Generator {
 
             Player player = Player.getInstance();
 
-            Ghost ghost1 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
-
-
-//            Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 11, Color.magenta);
-//        Ghost ghost2 = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
-//
-//
-////            Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 11, Color.CYAN);
-//        Ghost ghost3 = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
-//
-//        Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
-//            Ghost ghost4 = new Ghost(ts * 14 + ts / 2, ts * 11, Color.ORANGE);
-
+            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
+            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+            new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
         }
 
         private static void generateEnvironments () {
+
             new EmptyZone(ts * 7, ts * 9, ts * 14, ts * 11);
             new EmptyZone(1*ts,3*ts, ts, ts);
             new EmptyZone(26*ts, 3*ts, ts, ts);

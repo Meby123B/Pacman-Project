@@ -7,10 +7,12 @@ import Game.ScreenSettings;
 import java.util.Random;
 
 public class Ai {
-    int goToX, goToY;
+    static int goToX, goToY;
     static double line=100000.0;
     static boolean up,down,left,right;
-    public static MoveSides getDirection() {
+    private static Ghost ghost;
+
+    public static MoveSides getRandomDir() {
         MoveSides newDir = null;
 
         Random rand = new Random();
@@ -24,39 +26,45 @@ public class Ai {
         return newDir;
     }
 
-    public  MoveSides goTo(int x, int y) {
-        return null;
+    public static void setGoTo() {
+
+        goToX = Player.getInstance().getX();
+        goToY = Player.getInstance().getY();
     }
 
 
-    public static MoveSides priority(Ghost ghost){
-        checkAvailableDirections(ghost);
+    public static MoveSides getDirection(Ghost ghost){
+        MoveSides newDirection =null;
 
-        MoveSides dirResult=null;
+        setGoTo();
+        setGhost(ghost); //todo remove after make ai not static
+        checkAvailableDirections();
+        newDirection = getPriority(newDirection);
+
+        return newDirection;
+
+    }
+
+    private static void setGhost(Ghost g) {
+        ghost = g;
+    }
+
+    private static MoveSides getPriority(MoveSides newDirection) {
         if (up) {
-            dirResult = compareDistances(ghost,dirResult,  MoveSides.UP);}
+            newDirection = compareDistances(ghost, newDirection,  MoveSides.UP);}
         if (left) {
-            dirResult = compareDistances(ghost,dirResult,  MoveSides.LEFT);}
+            newDirection = compareDistances(ghost, newDirection,  MoveSides.LEFT);}
         if (down) {
-            dirResult = compareDistances(ghost,dirResult,  MoveSides.DOWN);}
+            newDirection = compareDistances(ghost, newDirection,  MoveSides.DOWN);}
         if (right) {
-            dirResult = compareDistances(ghost,dirResult,  MoveSides.RIGHT);}
+            newDirection = compareDistances(ghost, newDirection,  MoveSides.RIGHT);}
 
-        System.out.println("------------");
-        System.out.println("up: "+up);
-        System.out.println("down: "+down);
-        System.out.println("left: "+left);
-        System.out.println("right: "+right);
-        System.out.println("FINISH: "+ dirResult);
-        System.out.println("------------");
         line =10000.0;
-        return dirResult;
-
+        return newDirection;
     }
 
-    private static void checkAvailableDirections(Ghost ghost) {
+    private static void checkAvailableDirections() {
         MoveSides lastDir = ghost.getDirection();
-
 
         up = Movement.checkDirection(ghost, MoveSides.UP);
         down = Movement.checkDirection(ghost, MoveSides.DOWN);
@@ -64,7 +72,6 @@ public class Ai {
         right = Movement.checkDirection(ghost, MoveSides.RIGHT);
 
         if (lastDir == null) return;
-
 
         switch (lastDir){
             case UP ->  down=false;
@@ -118,8 +125,8 @@ public class Ai {
             case RIGHT -> x += ts;
         }
         // calculate distance
-        int w = Math.abs(Player.getInstance().getX() - x); //todo change it to gotoX
-        int h = Math.abs(Player.getInstance().getY() - y);
+        int w = Math.abs(goToX - x); //todo change it to gotoX
+        int h = Math.abs(goToY - y);
         return Math.sqrt((w*w) + (h*h));
     }
 }
