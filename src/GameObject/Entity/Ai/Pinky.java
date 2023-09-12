@@ -7,6 +7,7 @@ import GameObject.Entity.Player;
 import GameObject.Mouse;
 
 public class Pinky extends Ai{
+    MoveSides lastDirection = MoveSides.DOWN;
     public Pinky(Ghost ghost) {
         super(ghost);
     }
@@ -18,8 +19,8 @@ public class Pinky extends Ai{
 
         MoveSides dir = Player.getInstance().getDirection();
 
-        if (dir == null) {dir = MoveSides.LEFT;} //todo disable null or remember last dir
-
+        if (dir == null) {dir = lastDirection;}
+        lastDirection = dir;
         int ts = ScreenSettings.tileSize;
         switch (dir){
             case UP ->  y -= ts*4;
@@ -27,8 +28,8 @@ public class Pinky extends Ai{
             case LEFT -> x -= ts*4;
             case RIGHT -> x += ts*4;
         }
-        Mouse.instance.setX(x);
-        Mouse.instance.setY(y);
+//        Mouse.instance.setX(x);
+//        Mouse.instance.setY(y);
         goToX =x;
         goToY =y;
 

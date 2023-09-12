@@ -136,9 +136,10 @@ public class Generator {
 
         private static void generateEntity () {
 
-            Player player = Player.getInstance();
+            Player.getInstance();
             GhostFactory.makeBlinky();
             GhostFactory.makePinky();
+            GhostFactory.makeInky();
 //            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
 //            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
 //            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);

@@ -1,8 +1,7 @@
 package GameObject.Entity;
 
 import Game.ScreenSettings;
-import GameObject.Entity.Ai.Blinky;
-import GameObject.Entity.Ai.Pinky;
+import GameObject.Entity.Ai.*;
 
 import java.awt.*;
 
@@ -19,7 +18,9 @@ public class GhostFactory {
         return ghost;
     }
     public static Ghost makeInky(){
-        return new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+        Ghost ghost = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+        ghost.setAi( new Inky(ghost));
+        return ghost;
     }
     public static Ghost makeClyde(){
         return new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
