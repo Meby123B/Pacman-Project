@@ -1,8 +1,8 @@
 package GameObject.Entity;
 
+import Animation.PlayerAnim;
 import Game.Controller;
 import Game.KeyHandler;
-import Game.Manager.GameManager;
 import Game.Manager.Life;
 import Game.ScreenSettings;
 import GameObject.Eatable;
@@ -10,11 +10,13 @@ import GameObject.Movable;
 import GameObject.GameObject;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Player extends GameObject implements Movable, Eatable {
     int speed = 2;
     MoveSides direction=null;
     static Player instance;
+    PlayerAnim anim;
 
     private Player(int x, int y, Color color) {
         super(x, y, color);
@@ -27,7 +29,11 @@ public class Player extends GameObject implements Movable, Eatable {
             int y = 23*ScreenSettings.tileSize;
             Player p = new Player(x,y,Color.YELLOW);
 
+            p.anim = new PlayerAnim();
+            p.anim.getImages();
+
             p.setOriginalPos(p.x,p.y);
+
 
             Entity.list.add(p);
             instance = p;
@@ -51,6 +57,7 @@ public class Player extends GameObject implements Movable, Eatable {
     }
     @Override
     public void update() {
+        anim.updateFrameCounter();
         if (Life.getLife() <=0) {return;}
 //        System.out.println(direction); //D🪲
         checkKeys();
@@ -100,4 +107,13 @@ public class Player extends GameObject implements Movable, Eatable {
     @Override
     public void collideWithGhost(Ghost g) {}
 
+
+    int frameCounter;
+
+    @Override
+    public void draw(Graphics2D g2) {
+        BufferedImage image = anim.drawPlayer(g2, direction);
+        g2.drawImage(image,x,y,width,height,null);
+
+    }
 }

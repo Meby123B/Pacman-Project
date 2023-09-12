@@ -6,8 +6,6 @@ import Game.Manager.Level.*;
 import Game.Manager.Mode.*;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
-import GameObject.Collectables.Dot;
-import GameObject.Collectables.FruitGenerator;
 import GameObject.Entity.Entity;
 
 import java.awt.*;

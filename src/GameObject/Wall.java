@@ -23,7 +23,7 @@ public class Wall extends GameObject {
     public void draw(Graphics2D g2) {
         g2.setColor(Color.black);
         g2.fillRect(x, y, width, height);
-        int gap = 3 * ScreenSettings.scale;
+        int gap = (int)(3 * ScreenSettings.scale);
 
         g2.setColor(color);
         g2.fillRect(x+gap, y+gap, width-(gap*2), gap);

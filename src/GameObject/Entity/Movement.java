@@ -2,6 +2,7 @@ package GameObject.Entity;
 
 
 import Game.Collision;
+import Game.ScreenSettings;
 import GameObject.GameObject;
 import GameObject.Movable;
 
@@ -53,7 +54,7 @@ public class Movement {
     }
 
     private static void extractSpeedAndDir(GameObject obj){
-        objSpeed = ((Movable)obj).getSpeed();
+        objSpeed = (int)(((Movable)obj).getSpeed()* ScreenSettings.scale);
         lastDirection = ((Movable)obj).getDirection();
     }
 

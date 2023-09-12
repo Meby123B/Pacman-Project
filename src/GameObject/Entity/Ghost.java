@@ -11,6 +11,7 @@ import GameObject.Movable;
 import java.awt.*;
 
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
+    public boolean isEaten=false;
     boolean getOut= true;
     Ai ai;
     MoveSides direction=null;
@@ -74,12 +75,14 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         setDirection(null);
         Score.increase(200);
         getOut=true;
+        isEaten=true;
         this.resetPosition();
     }
 
     public void exit() {
         if (y <= ScreenSettings.tileSize *11) {
             getOut = false;
+            isEaten = false;
             return;
         }
 

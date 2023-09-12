@@ -18,7 +18,9 @@ public class BlueMode implements Mode{
 
     @Override
     public Ai getGhostAi(Ghost g) {
-//        System.out.println("run");
+        if (g.isEaten){
+            return g.getAi();
+        }
         return new GameObject.Entity.Ai.BlueMode(g);
 //        return Ai.runFromPlayer();//todo
     }

@@ -150,6 +150,6 @@ public class Generator {
         Controller.allObjects.add(Environment.list);
         Controller.allObjects.add(Collectim.list);
         Controller.allObjects.add(Entity.list);
-        Controller.allObjects.add(TargetSign.list);
+//        Controller.allObjects.add(TargetSign.list);//D🪲
     }
 }
