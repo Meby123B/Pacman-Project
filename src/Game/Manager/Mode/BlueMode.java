@@ -1,27 +1,31 @@
 package Game.Manager.Mode;
 
+import Animation.ImageTools;
 import GameObject.Entity.Ai.Ai;
 import GameObject.Entity.Ghost;
 import GameObject.Eatable;
+import GameObject.Entity.Player;
 
-import java.awt.*;
+import java.awt.image.BufferedImage;
 
-public class BlueMode implements Mode{
+public class BlueMode implements Mode {
+    Ai ai = new GameObject.Entity.Ai.BlueMode(null);
+    String path = "/Objects/BlueMode.png";
+    private final BufferedImage image = new ImageTools().getImage(path);
+
     @Override
-    public int ghostSpeed() {
+    public int ghostSpeed(Ghost g) {
         return 1;
     }
+
     @Override
-    public Color getGhostColor(Ghost g) {
-        return Color.BLUE;
+    public BufferedImage getGhostImage(Ghost g) {
+        return image;
     }
 
     @Override
     public Ai getGhostAi(Ghost g) {
-        if (g.isEaten){
-            return g.getAi();
-        }
-        return new GameObject.Entity.Ai.BlueMode(g);
+        return ai;
 //        return Ai.runFromPlayer();//todo
     }
 

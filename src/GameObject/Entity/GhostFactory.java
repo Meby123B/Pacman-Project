@@ -9,22 +9,26 @@ import java.awt.*;
 public class GhostFactory {
     private static int ts = ScreenSettings.tileSize;
     public static Ghost makeBlinky(){
-        Ghost ghost =new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
+        String path = "/Objects/Blinky.png";
+        Ghost ghost =new Ghost(ts * 13 + ts / 2, ts * 11, path);
         ghost.setAi( new Blinky(ghost));
         return ghost;
     }
     public static Ghost makePinky(){
-        Ghost ghost = new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
+        String path = "/Objects/Pinky.png";
+        Ghost ghost = new Ghost(ts * 13 + ts / 2, ts * 14, path);
         ghost.setAi( new Pinky(ghost));
         return ghost;
     }
     public static Ghost makeInky(){
-        Ghost ghost = new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
+        String path = "/Objects/Inky.png";
+        Ghost ghost = new Ghost(ts * 12 + ts / 2, ts * 14, path);
         ghost.setAi( new Inky(ghost));
         return ghost;
     }
     public static Ghost makeClyde(){
-        Ghost ghost = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+        String path = "/Objects/Clyde.png";
+        Ghost ghost = new Ghost(ts * 14 + ts / 2, ts * 14, path);
         ghost.setAi( new Clyde(ghost));
         return ghost;
     }

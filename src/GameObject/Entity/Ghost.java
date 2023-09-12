@@ -1,6 +1,10 @@
 package GameObject.Entity;
 
+import Animation.ImageTools;
 import Game.Manager.GameManager;
+import Game.Manager.Mode.BlueMode;
+import Game.Manager.Mode.Mode;
+import Game.Manager.Mode.NormalMode;
 import Game.Manager.Score;
 import Game.ScreenSettings;
 import GameObject.Eatable;
@@ -9,17 +13,30 @@ import GameObject.Movable;
 //import GameObject.*;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
-    public boolean isEaten=false;
+//    public boolean isEaten=false;
     boolean getOut= true;
+    Mode mode = new NormalMode();
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
     Ai ai;
     MoveSides direction=null;
+    BufferedImage image;
 
-    public Ghost(int x, int y, Color color){
+    public Ghost(int x, int y, String path){
 
-        super(x,y,color);
+        super(x,y);
         super.setOriginalPos(x,y);
+        image = new ImageTools().getImage(path);
         Entity.list.add(this);
     }
 
@@ -29,7 +46,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public void update() {
-        direction = GameManager.getGameMode().getGhostAi(this).getDirection(this);
+        direction = mode.getGhostAi(this).getDirection(this);
 
 //        System.out.println("g:dir " + direction); //D🪲
 //        if (direction == null){
@@ -42,8 +59,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
         move(direction);
     }
     public void collideWithPlayer(Player p){
-        GameManager.getGameMode()
-                .whenGhostEaten(this).whenEaten();
+        mode.whenGhostEaten(this).whenEaten();
     }
 
     @Override
@@ -56,8 +72,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public int getSpeed() {
-        return GameManager.getGameMode()
-                .ghostSpeed();
+        return mode.ghostSpeed(this);
     }
 
     @Override
@@ -74,15 +89,14 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     public void whenEaten() {
         setDirection(null);
         Score.increase(200);
+        mode = new NormalMode();
         getOut=true;
-        isEaten=true;
         this.resetPosition();
     }
 
     public void exit() {
         if (y <= ScreenSettings.tileSize *11) {
             getOut = false;
-            isEaten = false;
             return;
         }
 
@@ -95,9 +109,17 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public void draw(Graphics2D g2) {
-        g2.setColor(GameManager.getGameMode()
-                .getGhostColor(this));
-        g2.fillRect(x,y,width,height);
+        int ts = ScreenSettings.tileSize;
+        BufferedImage imageByMode = mode.getGhostImage(this);
+        g2.drawImage(imageByMode, x-ts/4, y-ts/4,width+ts/2,height+ts/2, null);
+
+//        g2.setColor(GameManager.getGameMode()
+//                .getGhostColor(this));
+//        g2.fillRect(x,y,width,height);
+    }
+
+    public BufferedImage getImage() {
+        return this.image;
     }
 
     public Ai getAi() {

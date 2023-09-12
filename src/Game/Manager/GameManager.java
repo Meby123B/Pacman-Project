@@ -7,12 +7,12 @@ import Game.Manager.Mode.*;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
 import GameObject.Entity.Entity;
+import GameObject.Entity.Ghost;
 
 import java.awt.*;
 
 public class GameManager {
     private static Level level;
-    private static Mode gameMode;
 
     public static void resetPositions(){
         Entity.list.forEach(obj -> obj.resetPosition());
@@ -22,7 +22,6 @@ public class GameManager {
         return level;
     }
     public static void newGame() {
-        gameMode = new NormalMode();
         level = new Level1();
         Generator.generateAll();
     }
@@ -43,14 +42,19 @@ public class GameManager {
             Controller.resetEntities();
         }
     }
-    public static Mode getGameMode(){
-        return gameMode;
-    }
     public static void setBlueMode(){
-        gameMode = new BlueMode();
+        Entity.list.forEach(ent -> {
+            if (ent instanceof Ghost){
+                ((Ghost)ent).setMode(new BlueMode());
+            }
+        });
     }
     public static void returnToNormalMode(){
-        gameMode = new NormalMode();
+        Entity.list.forEach(ent -> {
+            if (ent instanceof Ghost){
+                ((Ghost)ent).setMode(new NormalMode());
+            }
+        });
     }
 
     public static void drawLevel(Graphics2D g2) {

@@ -21,6 +21,10 @@ public abstract class GameObject {
         this.y = y ;
         this.color = color;
     }
+    public GameObject(int x, int y){
+        this.x = x ;
+        this.y = y ;
+    }
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);

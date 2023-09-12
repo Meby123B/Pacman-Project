@@ -5,17 +5,17 @@ import GameObject.Entity.Ghost;
 import GameObject.Entity.Player;
 import GameObject.Eatable;
 
-import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class NormalMode implements Mode{
     @Override
-    public int ghostSpeed() {
+    public int ghostSpeed(Ghost g) {
         return 2;
     }
 
     @Override
-    public Color getGhostColor(Ghost g) {
-        return g.getColor();
+    public BufferedImage getGhostImage(Ghost g) {
+        return g.getImage();
     }
 
     @Override

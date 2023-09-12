@@ -47,8 +47,10 @@ public class Inky extends Ai{
 
     private void saveBlinkyGhost() {
         Entity.list.forEach(ent ->{
-            if (ent.getColor() == Color.red){
-                blinky = (Ghost) ent;
+            if (ent instanceof Ghost){
+                if (((Ghost)ent).getAi() instanceof Blinky){
+                    blinky = (Ghost) ent;
+                }
             }
         });
     }

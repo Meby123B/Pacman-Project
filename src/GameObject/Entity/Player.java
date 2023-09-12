@@ -3,6 +3,7 @@ package GameObject.Entity;
 import Animation.PlayerAnim;
 import Game.Controller;
 import Game.KeyHandler;
+import Game.Manager.GameManager;
 import Game.Manager.Life;
 import Game.ScreenSettings;
 import GameObject.Eatable;
@@ -91,7 +92,6 @@ public class Player extends GameObject implements Movable, Eatable {
 
     private void loseLife(){
         Life.lose();
-        Controller.resetEntities();
         if (Life.getLife() <= 0){gameover();}
     }
     private void gameover(){
@@ -102,6 +102,9 @@ public class Player extends GameObject implements Movable, Eatable {
     @Override
     public void whenEaten() {
         setDirection(null);
+        Controller.resetEntities();
+        GameManager.returnToNormalMode();
+
         loseLife();
     }
     @Override
