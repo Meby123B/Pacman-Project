@@ -29,8 +29,7 @@ public abstract class Ai {
     }
 
     protected MoveSides getRandomDir(Ghost ghost) {
-        setGhost(ghost); //todo remove after make ai not
-        if (ghost.getDirection() == null) {
+        if (ghost.getDirection() != null) {
             return ghost.getDirection();
         }
 
@@ -53,7 +52,6 @@ public abstract class Ai {
         MoveSides newDirection = null;
 
         setGoTo();
-//        setGhost(ghost); //todo remove after make ai not
         checkAvailableDirections();
         newDirection = getPriority(newDirection);
 
@@ -97,19 +95,6 @@ public abstract class Ai {
         }
 
     }
-    private boolean checkDir(Ghost ghost, MoveSides dir){
-        int x = ghost.getX();
-        int y = ghost.getY();
-
-        int ts = ScreenSettings.tileSize;
-        switch (dir){
-            case UP ->  y -= ghost.getSpeed();
-            case DOWN -> y += ghost.getSpeed();
-            case LEFT -> x -= ghost.getSpeed();
-            case RIGHT -> x += ghost.getSpeed();
-        }
-        return !(Collision.checkCollisionWithWall(y, x, x + ts, y + ts));
-    }
 
     private MoveSides compareDistances(Ghost ghost, MoveSides originalDir, MoveSides newDir) {
         double lineTemp = calculateDistance(ghost, newDir);
@@ -119,16 +104,7 @@ public abstract class Ai {
         }
         return originalDir;
     }
-
-    private int numOfOptions() {
-        int num =0;
-        if (up) num++;
-        if (down) num++;
-        if (left) num++;
-        if (right) num++;
-        return num;
-    }
-
+    
     public double calculateDistance(Ghost ghost, MoveSides dir){
         int x = ghost.getX();
         int y = ghost.getY();

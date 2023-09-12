@@ -48,11 +48,6 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     public void update() {
         direction = mode.getGhostAi(this).getDirection(this);
 
-//        System.out.println("g:dir " + direction); //D🪲
-//        if (direction == null){
-//            direction = GameManager.getGameMode().
-//                    getGhostAi(this).getRandomDir(); //todo AI make it interface
-//        }
         if (getOut){
             exit();
         }
