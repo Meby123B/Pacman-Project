@@ -15,7 +15,6 @@ public class BlueMode extends Ai{
 
     @Override
     public MoveSides getDirection(Ghost ghost) {
-        return super.getRandomDir(ghost); //todo blueMode Ai
-//        return null;
+        return super.getRandomDir(ghost);
     }
 }

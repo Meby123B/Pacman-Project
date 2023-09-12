@@ -27,7 +27,7 @@ public class GameManager {
     }
     public static void levelUp(){
         Life._1Up();
-        Generator.generateCollectables();
+
         switch (level.getNum()){
             case 1-> level=new Level2();
             case 2-> level=new Level3();
@@ -35,10 +35,10 @@ public class GameManager {
         }
     }
     public static void checkFinishLevel(){
-//        System.out.println(Dot.list.size());
+//        System.out.println(Dot.list.size()); //D🪲
         if(Collectim.list.size() == 0){
             levelUp();
-            //todo checkForGenerate new Dots
+            Generator.generateCollectables();
             Controller.resetEntities();
         }
     }

@@ -103,7 +103,6 @@ public class Generator {
 //                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
             }
         }
-        FruitFactory.makeApple();
     }
 
     private static void generateEntity() {

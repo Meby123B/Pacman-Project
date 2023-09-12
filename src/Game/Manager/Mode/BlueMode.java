@@ -26,7 +26,6 @@ public class BlueMode implements Mode {
     @Override
     public Ai getGhostAi(Ghost g) {
         return ai;
-//        return Ai.runFromPlayer();//todo
     }
 
     @Override
