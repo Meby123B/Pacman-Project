@@ -15,7 +15,7 @@ public class Movement {
         extractSpeedAndDir(obj);
         moveIt(obj,dir);
 
-        if (Collision.isCollideWithWall(obj)){
+        if (Collision.checkCollisionWithWall(obj)){
             cancelMove(obj,dir);
             resetDirection(obj);
         }
@@ -33,7 +33,7 @@ public class Movement {
         setDirection(obj,dir);
 
         moveIt(obj,dir);
-        if (Collision.isCollideWithWall(obj)){
+        if (Collision.checkCollisionWithWall(obj)){
             resetDirection(obj);
         }
         cancelMove(obj,dir);
@@ -45,7 +45,7 @@ public class Movement {
         extractSpeedAndDir(obj);
 
         moveIt(obj,dir);
-        if (Collision.isCollideWithWall(obj)){
+        if (Collision.checkCollisionWithWall(obj)){
             result = false;
         }
         cancelMove(obj,dir);

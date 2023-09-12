@@ -8,6 +8,8 @@ import GameObject.Mouse;
 public class Clyde extends Ai{
     public Clyde(Ghost ghost) {
         super(ghost);
+        setTarget();
+
     }
 
     @Override
@@ -25,10 +27,10 @@ public class Clyde extends Ai{
             x = 0;
             y =  ScreenSettings.height;
         }
-        Mouse.instance.setX(x);
-        Mouse.instance.setY(y);
 
         goToX = x;
         goToY = y;
+        updateTargetPosition();
+
     }
 }

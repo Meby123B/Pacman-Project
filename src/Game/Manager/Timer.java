@@ -62,5 +62,8 @@ public class Timer {
         this.count = startCount;
         resume();
     }
+    public void addTime(int frames) {
+        this.count += frames;
+    }
 
 }

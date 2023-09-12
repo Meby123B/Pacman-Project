@@ -5,8 +5,6 @@ import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
 import GameObject.Entity.MoveSides;
 import GameObject.Entity.Player;
-import GameObject.Mouse;
-import jdk.swing.interop.DispatcherWrapper;
 
 import java.awt.*;
 
@@ -17,6 +15,7 @@ public class Inky extends Ai{
     public Inky(Ghost ghost) {
         super(ghost);
         saveBlinkyGhost();
+        setTarget();
     }
 
     @Override
@@ -39,11 +38,11 @@ public class Inky extends Ai{
         x += x-blinky.getX();
         y += y-blinky.getY();
 
-//        Mouse.instance.setX(x);
-//        Mouse.instance.setY(y);
 
         goToX = x;
         goToY = y;
+        updateTargetPosition();
+
     }
 
     private void saveBlinkyGhost() {

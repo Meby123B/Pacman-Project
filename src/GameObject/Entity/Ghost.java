@@ -1,6 +1,7 @@
 package GameObject.Entity;
 
 import Game.Manager.GameManager;
+import Game.Manager.Score;
 import Game.ScreenSettings;
 import GameObject.Eatable;
 import GameObject.Entity.Ai.Ai;
@@ -71,6 +72,7 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     @Override
     public void whenEaten() {
         setDirection(null);
+        Score.increase(200);
         getOut=true;
         this.resetPosition();
     }

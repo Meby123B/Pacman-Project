@@ -20,6 +20,6 @@ public class Level1 implements Level{
 
     @Override
     public double timeForFruit() {
-        return 10.0;
+        return 1.0;
     }
 }

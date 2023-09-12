@@ -3,12 +3,10 @@ package Game;
     import Game.Manager.GameManager;
     import Game.Manager.Timer;
     import GameObject.*;
-    import GameObject.Collectables.Collectim;
-    import GameObject.Collectables.Dot;
     import GameObject.Entity.Entity;
     import GameObject.Entity.Ghost;
-    import GameObject.Environment.Environment;
-    import GameObject.Entity.Player;
+    import GameObject.Entity.*;
+    import GameObject.Collectables.FruitGenerator;
 
 
     import java.util.ArrayList;
@@ -27,13 +25,13 @@ public class Controller {
         GameManager.checkFinishLevel();
 
         Timer.list.forEach(timer -> timer.countDown());
+        FruitGenerator.checkForGenerate();
 
         toRemove.forEach(obj -> allObjects.forEach(list -> list.remove(obj)));
         TimerToRemove.forEach(timer -> Timer.list.remove(timer));
 
-
-
     }
+
 
 
     public static void removeObj(GameObject obj){

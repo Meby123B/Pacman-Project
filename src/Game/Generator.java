@@ -1,16 +1,11 @@
 package Game;
 
 import GameObject.*;
-import GameObject.Collectables.Collectim;
-import GameObject.Collectables.Dot;
-import GameObject.Collectables.PowerDot;
+import GameObject.Collectables.*;
 import GameObject.Entity.Entity;
-import GameObject.Entity.Ghost;
 import GameObject.Entity.GhostFactory;
 import GameObject.Entity.Player;
 import GameObject.Environment.*;
-
-import java.awt.*;
 
 public class Generator {
     static int ts = ScreenSettings.tileSize;
@@ -85,10 +80,10 @@ public class Generator {
 
     public static void generateCollectables() {
 
-        new PowerDot(1*ts,3*ts);
-        new PowerDot(26*ts, 3*ts);
-        new PowerDot(1*ts,23*ts);
-        new PowerDot(26*ts,23*ts);
+        new PowerDot(1 * ts, 3 * ts);
+        new PowerDot(26 * ts, 3 * ts);
+        new PowerDot(1 * ts, 23 * ts);
+        new PowerDot(26 * ts, 23 * ts);
 
         int x, y;
         Dot dot;
@@ -98,88 +93,63 @@ public class Generator {
 
                 dot = new Dot(x * ts, y * ts);
                 if (
-                    Collision.isCollideWithEnvironment(dot)
-                    || Collision.isCollideWithWall(dot)
+                        Collision.checkCollisionWithEnvironment(dot)
+                        || Collision.checkCollisionWithWall(dot)
                 ) {
 //                    System.out.println("aya!"); //D🪲 happened?
                     continue;
                 }
                 Collectim.list.add(dot);
-
 //                System.out.println(Dot.list.size()); //D🪲 check how many dots generated
             }
         }
-
-
-
-//        Random rand = new Random();
-//        int x, y;
-//        Dot dot;
-//
-//        for (int i = 0; i < 200; i++) {
-////            x = rand.nextInt(ScreenSettings.maxScreenCol);
-////            y = rand.nextInt(ScreenSettings.maxScreenRow);
-//
-//            dot = new Dot(x * ts, y * ts);
-//            if (dot.isCollideWithWall() || dot.isCollideWithEnvironment()) {
-//                System.out.println("aya!"); //D🪲 happened?
-//                i--;
-//                continue;
-//            }
-//            Dot.list.add(dot);
-//
-//
-//            System.out.println(Dot.list.size()); //D🪲 check how many dots generated
-//        }
-
-        }
-
-        private static void generateEntity () {
-
-            Player.getInstance();
-            GhostFactory.makeBlinky();
-            GhostFactory.makePinky();
-            GhostFactory.makeInky();
-            GhostFactory.makeClyde();
-//            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
-//            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
-//            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
-//            new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
-        }
-
-        private static void generateEnvironments () {
-
-            new EmptyZone(ts * 7, ts * 9, ts * 14, ts * 11);
-            new EmptyZone(1*ts,3*ts, ts, ts);
-            new EmptyZone(26*ts, 3*ts, ts, ts);
-            new EmptyZone(1*ts,23*ts, ts, ts);
-            new EmptyZone(26*ts,23*ts, ts, ts);
-            new EmptyZone(26*ts,23*ts, ts, ts);
-            new EmptyZone(13*ts,23*ts, ts*2, ts);
-
-
-            new Tunnel(0, ts * 14, 6 * ts, ts);
-            new Tunnel(scrWidth - 6 * ts, ts * 14, 6 * ts, ts);
-
-            //teleporters
-            new Teleporter(-ts - (ts / 2), ts * 14,
-                    ScreenSettings.width - ts / 2, ts * 14);
-
-            new Teleporter(ScreenSettings.width + (ts / 2), ts * 14,
-                    -(ts / 2), ts * 14);
-
-        }
-
-        public static void generateAll () {
-
-            generateWalls();
-            generateEnvironments();
-            generateEntity();
-            generateCollectables();
-            Entity.list.add(new Mouse());
-
-            Controller.allObjects.add(Environment.list);
-            Controller.allObjects.add(Collectim.list);
-            Controller.allObjects.add(Entity.list);
-        }
+        FruitFactory.makeApple();
     }
+
+    private static void generateEntity() {
+
+        Player.getInstance();
+
+        GhostFactory.makeBlinky();
+        GhostFactory.makePinky();
+        GhostFactory.makeInky();
+        GhostFactory.makeClyde();
+    }
+
+    private static void generateEnvironments() {
+
+        new EmptyZone(ts * 7, ts * 9, ts * 14, ts * 11);
+        new EmptyZone(1 * ts, 3 * ts, ts, ts);
+        new EmptyZone(26 * ts, 3 * ts, ts, ts);
+        new EmptyZone(1 * ts, 23 * ts, ts, ts);
+        new EmptyZone(26 * ts, 23 * ts, ts, ts);
+        new EmptyZone(26 * ts, 23 * ts, ts, ts);
+        new EmptyZone(13 * ts, 23 * ts, ts * 2, ts);
+
+
+        new Tunnel(0, ts * 14, 6 * ts, ts);
+        new Tunnel(scrWidth - 6 * ts, ts * 14, 6 * ts, ts);
+
+        //teleporters
+        new Teleporter(-ts - (ts / 2), ts * 14,
+                ScreenSettings.width - ts / 2, ts * 14);
+
+        new Teleporter(ScreenSettings.width + (ts / 2), ts * 14,
+                -(ts / 2), ts * 14);
+
+    }
+
+    public static void generateAll() {
+
+        generateWalls();
+        generateEnvironments();
+        generateEntity();
+        generateCollectables();
+        Entity.list.add(new Mouse());
+
+        Controller.allObjects.add(Environment.list);
+        Controller.allObjects.add(Collectim.list);
+        Controller.allObjects.add(Entity.list);
+        Controller.allObjects.add(TargetSign.list);
+    }
+}

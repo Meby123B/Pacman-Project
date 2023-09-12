@@ -6,7 +6,7 @@ import Game.ScreenSettings;
 import GameObject.Entity.Ghost;
 import GameObject.Entity.MoveSides;
 import GameObject.Entity.Movement;
-import GameObject.Entity.Player;
+import GameObject.TargetSign;
 
 import java.util.Random;
 
@@ -15,9 +15,17 @@ public abstract class Ai {
     double line=100000.0;
     boolean up,down,left,right;
     protected Ghost ghost;
+    protected TargetSign target;
 
     public Ai(Ghost ghost){
         this.ghost=ghost;
+    }
+    protected void setTarget(){
+        this.target = new TargetSign(0,0, ghost.getColor());
+    }
+    protected void updateTargetPosition(){
+        target.setX(goToX);
+        target.setY(goToY);
     }
 
     protected MoveSides getRandomDir(Ghost ghost) {
@@ -100,7 +108,7 @@ public abstract class Ai {
             case LEFT -> x -= ghost.getSpeed();
             case RIGHT -> x += ghost.getSpeed();
         }
-        return !(Collision.isCollideWithWall(y, x, x + ts, y + ts));
+        return !(Collision.checkCollisionWithWall(y, x, x + ts, y + ts));
     }
 
     private MoveSides compareDistances(Ghost ghost, MoveSides originalDir, MoveSides newDir) {

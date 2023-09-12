@@ -7,6 +7,7 @@ import Game.Manager.Mode.*;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
 import GameObject.Collectables.Dot;
+import GameObject.Collectables.FruitGenerator;
 import GameObject.Entity.Entity;
 
 import java.awt.*;
@@ -40,7 +41,7 @@ public class GameManager {
 //        System.out.println(Dot.list.size());
         if(Collectim.list.size() == 0){
             levelUp();
-            //todo generate new Dots
+            //todo checkForGenerate new Dots
             Controller.resetEntities();
         }
     }

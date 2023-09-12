@@ -21,7 +21,7 @@ public class Tunnel extends GameObject {
 
     @Override
     public void collideWithGhost(Ghost g) {
-        System.out.println("now you going to slow down!!");
+        System.out.println("now you going to slow down!!"); //todo change Ghost Speed
 
     }
 

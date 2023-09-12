@@ -2,6 +2,7 @@ package GameObject.Entity;
 
 import Game.ScreenSettings;
 import GameObject.Entity.Ai.*;
+import GameObject.TargetSign;
 
 import java.awt.*;
 

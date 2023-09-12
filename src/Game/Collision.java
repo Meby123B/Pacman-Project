@@ -37,7 +37,7 @@ public class Collision {
         }
         else return false;
     }
-    public static boolean isCollideWithWall(GameObject obj){
+    public static boolean checkCollisionWithWall(GameObject obj){
         for (int i = 0; i < Wall.list.size(); i++) {
 
             if(check(obj, Wall.list.get(i))){
@@ -46,7 +46,7 @@ public class Collision {
         }
         return false;
     }
-    public static boolean isCollideWithWall(int objUp, int objLeft, int objRight, int objDown){
+    public static boolean checkCollisionWithWall(int objUp, int objLeft, int objRight, int objDown){
         for (int i = 0; i < Wall.list.size(); i++) {
 
             if(check(objUp, objLeft, objRight, objDown, Wall.list.get(i))){
@@ -55,7 +55,7 @@ public class Collision {
         }
         return false;
     }
-    public static boolean isCollideWithEnvironment(GameObject obj) {
+    public static boolean checkCollisionWithEnvironment(GameObject obj) {
         for (int i = 0; i < Environment.list.size(); i++) {
 
             if(check(obj, Environment.list.get(i))){
