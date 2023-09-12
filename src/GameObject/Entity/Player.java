@@ -112,8 +112,9 @@ public class Player extends GameObject implements Movable, Eatable {
 
     @Override
     public void draw(Graphics2D g2) {
+        int ts = ScreenSettings.tileSize;
         BufferedImage image = anim.drawPlayer(g2, direction);
-        g2.drawImage(image,x,y,width,height,null);
+        g2.drawImage(image,x-ts/4,y-ts/4,width+ts/2,height+ts/2,null);
 
     }
 }
