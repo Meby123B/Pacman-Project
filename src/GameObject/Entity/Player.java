@@ -9,6 +9,7 @@ import GameObject.Eatable;
 import GameObject.Movable;
 import GameObject.GameObject;
 
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -33,7 +34,6 @@ public class Player extends GameObject implements Movable, Eatable {
             p.anim.getImages();
 
             p.setOriginalPos(p.x,p.y);
-
 
             Entity.list.add(p);
             instance = p;
