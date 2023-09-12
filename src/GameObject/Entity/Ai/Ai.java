@@ -20,7 +20,7 @@ public abstract class Ai {
         this.ghost=ghost;
     }
 
-    public MoveSides getRandomDir(Ghost ghost) {
+    protected MoveSides getRandomDir(Ghost ghost) {
         setGhost(ghost); //todo remove after make ai not
         if (ghost.getDirection() == null) {
             return ghost.getDirection();
@@ -39,8 +39,7 @@ public abstract class Ai {
         return newDir;
     }
 
-    public abstract void setGoTo();
-
+    protected abstract void setGoTo();
 
     public MoveSides getDirection(Ghost ghost){
         MoveSides newDirection = null;

@@ -23,7 +23,9 @@ public class GhostFactory {
         return ghost;
     }
     public static Ghost makeClyde(){
-        return new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+        Ghost ghost = new Ghost(ts * 14 + ts / 2, ts * 14, Color.ORANGE);
+        ghost.setAi( new Clyde(ghost));
+        return ghost;
     }
 
 

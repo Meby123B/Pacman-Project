@@ -140,6 +140,7 @@ public class Generator {
             GhostFactory.makeBlinky();
             GhostFactory.makePinky();
             GhostFactory.makeInky();
+            GhostFactory.makeClyde();
 //            new Ghost(ts * 13 + ts / 2, ts * 11, Color.RED);
 //            new Ghost(ts * 13 + ts / 2, ts * 14, Color.magenta);
 //            new Ghost(ts * 12 + ts / 2, ts * 14, Color.CYAN);
