@@ -10,7 +10,7 @@ import GameObject.TargetSign;
 
 import java.util.Random;
 
-public abstract class Ai {
+public abstract class Ai  {
     int goToX, goToY;
     double line=100000.0;
     boolean up,down,left,right;
@@ -33,17 +33,16 @@ public abstract class Ai {
             return ghost.getDirection();
         }
 
-        MoveSides newDir = null;
-
         Random rand = new Random();
-        switch (rand.nextInt(4)) {
-            case 0 -> newDir = MoveSides.LEFT;
-            case 1 -> newDir = MoveSides.DOWN;
-            case 2 -> newDir = MoveSides.UP;
-            case 3 -> newDir = MoveSides.RIGHT;
-        }
 
-        return newDir;
+        return switch (rand.nextInt(4)) {
+            case 0 -> MoveSides.LEFT;
+            case 1 -> MoveSides.DOWN;
+            case 2 -> MoveSides.UP;
+            case 3 -> MoveSides.RIGHT;
+            default -> null;
+        };
+
     }
 
     protected abstract void setGoTo();

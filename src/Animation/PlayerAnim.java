@@ -43,20 +43,24 @@ public class PlayerAnim {
             lastDirection = direction;
         }
 
-        BufferedImage[] pointer = new BufferedImage[0];
-        switch (direction){
-            case LEFT -> pointer = leftAnimation;
-            case UP -> pointer = upAnimation;
-            case RIGHT -> pointer = rightAnimation;
-            case DOWN -> pointer = downAnimation;
-        }
+        BufferedImage[] pointer;
 
-        switch ((frameCounter/3)%4){
-            case 0 -> {return pointer[0];}
-            case 1 -> {return pointer[1];}
-            case 2 -> {return pointer[2];}
-            case 3 -> {return pointer[1];}
-        }
-        return null;
+        pointer = switch (direction){
+            case LEFT ->  leftAnimation;
+            case UP ->  upAnimation;
+            case RIGHT ->  rightAnimation;
+            case DOWN ->  downAnimation;
+        };
+
+        int speed =3;
+        int animationNumber = 4;
+        
+        return switch ((frameCounter/speed)%animationNumber){
+            case 0 ->  pointer[0];
+            case 1 ->  pointer[1];
+            case 2 ->  pointer[2];
+            case 3 ->  pointer[1];
+            default -> null;
+        };
     }
 }
