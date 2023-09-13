@@ -16,7 +16,7 @@ package Game;
 public class Controller {
     public static ArrayList<ArrayList<GameObject>> allObjects = new ArrayList<>();
     public static Stack<GameObject> toRemove = new Stack<>();
-    public static LinkedList<Timer> TimerToRemove = new LinkedList<>();
+    public static Stack<Timer> TimerToRemove = new Stack<>();
 //    private static final Player player = Player.getInstance();
 
     public static void updateAll(){

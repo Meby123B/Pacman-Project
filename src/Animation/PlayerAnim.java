@@ -3,7 +3,6 @@ package Animation;
 import GameObject.Entity.MoveSides;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -35,7 +34,7 @@ public class PlayerAnim {
         }
 
     }
-    public BufferedImage drawPlayer(Graphics2D g2, MoveSides direction){
+    public BufferedImage getImageFromAnimation(MoveSides direction){
         if (direction == null) {
             frameCounter=0;
             direction = lastDirection;
@@ -54,7 +53,7 @@ public class PlayerAnim {
 
         int speed =3;
         int animationNumber = 4;
-        
+
         return switch ((frameCounter/speed)%animationNumber){
             case 0 ->  pointer[0];
             case 1 ->  pointer[1];
