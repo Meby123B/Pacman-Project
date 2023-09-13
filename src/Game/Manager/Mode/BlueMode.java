@@ -4,13 +4,12 @@ import Animation.ImageTools;
 import GameObject.Entity.Ai.Ai;
 import GameObject.Entity.Ghost;
 import GameObject.Eatable;
-import GameObject.Entity.Player;
 
 import java.awt.image.BufferedImage;
 
 public class BlueMode implements Mode {
     Ai ai = new GameObject.Entity.Ai.BlueMode(null);
-    String path = "/Objects/BlueMode.png";
+    String path = "/Ghosts/BlueMode.png";
     private final BufferedImage image = new ImageTools().getImage(path);
 
     @Override
