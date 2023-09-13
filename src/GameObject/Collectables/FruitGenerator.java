@@ -19,7 +19,7 @@ public class FruitGenerator {
             case 1 -> FruitFactory.makeStrawberry();
             case 2 -> FruitFactory.makeOrange();
             case 3 -> FruitFactory.makeApple();
-            case 4 -> FruitFactory.makeMellon();
+            case 4 -> FruitFactory.makeMelon();
         }
     }
 

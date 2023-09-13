@@ -1,5 +1,6 @@
 package GameObject.Collectables;
 
+import Animation.ImageTools;
 import Game.Collision;
 import Game.Controller;
 import Game.Manager.GameManager;
@@ -10,6 +11,7 @@ import GameObject.*;
 import GameObject.Entity.Player;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Fruit extends GameObject implements Collectable, Callable {
@@ -17,21 +19,16 @@ public class Fruit extends GameObject implements Collectable, Callable {
     Random random = new Random();
     int ts = ScreenSettings.tileSize;
 
-    public Fruit(Color color) {
-        super(0, 0, color);
+
+    BufferedImage image;
+
+    public Fruit() {
+        super(0, 0);
 
         setTimer();
         randomisePosition();
-        resize();
 
         Collectim.list.add(this);
-    }
-
-    private void resize() {
-        this.x = x + ts/4;
-        this.y = y + ts/4;
-        this.width = ts / 2;
-        this.height = ts / 2;
     }
 
     private void setTimer() {
@@ -41,6 +38,9 @@ public class Fruit extends GameObject implements Collectable, Callable {
         new Timer(timeInSeconds, this);
     }
 
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
     private void randomisePosition() {
         Dot dot;
         do {
@@ -72,6 +72,11 @@ public class Fruit extends GameObject implements Collectable, Callable {
     public void collect() {
         Score.increase(value);
         Controller.removeObj(this);
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        g2.drawImage(image, x, y,width,height, null);
     }
 
     @Override

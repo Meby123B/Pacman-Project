@@ -25,7 +25,6 @@ public class PlayerAnim {
                 upAnimation[i] = ImageIO.read(getClass().getResourceAsStream("/Player/PacUp"+(i+1)+".png"));
                 rightAnimation[i] = ImageIO.read(getClass().getResourceAsStream("/Player/PacRight"+(i+1)+".png"));
                 downAnimation[i] = ImageIO.read(getClass().getResourceAsStream("/Player/PacDown"+(i+1)+".png"));
-//                downAnimation[i] = ImageIO.read(getClass().getResourceAsStream("/Objects/BlueMode.png"));
 
             }
 

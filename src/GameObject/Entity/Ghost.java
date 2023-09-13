@@ -20,13 +20,6 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     boolean getOut= true;
     Mode mode = new NormalMode();
 
-    public Mode getMode() {
-        return mode;
-    }
-
-    public void setMode(Mode mode) {
-        this.mode = mode;
-    }
 
     Ai ai;
     MoveSides direction=null;
@@ -119,5 +112,12 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     public Ai getAi() {
         return this.ai;
+    }
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 }

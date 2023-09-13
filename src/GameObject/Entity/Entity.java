@@ -3,8 +3,9 @@ package GameObject.Entity;
 
 import GameObject.GameObject;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Entity{
-        public static ArrayList<GameObject> list = new ArrayList<>();
+        public static LinkedList<GameObject> list = new LinkedList<>();
 
 }
