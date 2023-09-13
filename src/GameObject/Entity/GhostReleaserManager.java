@@ -12,25 +12,28 @@ public class GhostReleaserManager {
      public boolean releasePinky, releaseInky, releaseClyde;
      Timer gapTimer = new Timer(Timer.secondToFrames(3));
 
-    public void Check(){
+    public void check(){
         int sumForRelease = (int) (dotAmount / GameManager.getLevel().amountDotsForReleasingGhost());
         int eatenDots = dotAmount - Collectim.list.size();
 
         if (!gapTimer.timesUp()) return;
         if (eatenDots >= sumForRelease){
             releasePinky = true;
+            Pinky.setOut();
             gapTimer.reset();
         }
 
         if (!gapTimer.timesUp()) return;
         if (eatenDots >= sumForRelease*2){
             releaseInky = true;
+            Inky.setOut();
             gapTimer.reset();
         }
 
         if (!gapTimer.timesUp()) return;
         if (eatenDots >= sumForRelease*3){
             releaseClyde = true;
+            Clyde.setOut();
             gapTimer.reset();
         }
     }

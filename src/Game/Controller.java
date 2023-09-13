@@ -19,11 +19,13 @@ public class Controller {
     public static Stack<GameObject> toRemove = new Stack<>();
     public static Stack<Timer> TimerToRemove = new Stack<>();
 //    private static final Player player = Player.getInstance();
+    static GhostReleaserManager ghostReleaserManager = new GhostReleaserManager();
+
 
     public static void updateAll(){
         Entity.list.forEach(e -> e.update());
         Collision.checkAll();
-
+        ghostReleaserManager.check();
         GameManager.checkFinishLevel();
 
         Timer.list.forEach(timer -> timer.countDown());
