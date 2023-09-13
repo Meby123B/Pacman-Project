@@ -23,4 +23,9 @@ public class Level2 implements Level{
     public double timeForFruit() {
         return 0.7;
     }
+
+    @Override
+    public double amountDotsForReleasingGhost() {
+        return 5;
+    }
 }

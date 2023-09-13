@@ -16,7 +16,7 @@ public class PowerDot extends GameObject implements Collectable, Callable {
     );
     private static Timer blueModeTimer;
     public PowerDot(int x, int y){
-        super(x,y,Color.green);
+        super(x,y,new Color(0xffb897));
 
         value = 50;
         Collectim.list.add(this);

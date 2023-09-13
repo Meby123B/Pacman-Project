@@ -6,6 +6,7 @@ import GameObject.Entity.Ghost;
 import GameObject.Entity.Player;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 import static Game.ScreenSettings.tileSize;
 
@@ -28,7 +29,10 @@ public abstract class GameObject {
 
     public void draw(Graphics2D g2) {
         g2.setColor(color);
-        g2.fillRect(x,y,width,height);
+        int radius = width/2;
+        Shape circle = new Ellipse2D.Double(x , y , radius * 2.0, radius * 2.0);
+        g2.fill(circle);
+        g2.draw(circle);
     }
     public int getLeft(){ return x;}
     public int getRight(){ return x+width-1;}

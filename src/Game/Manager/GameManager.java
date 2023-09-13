@@ -6,6 +6,8 @@ import Game.Manager.Level.*;
 import Game.Manager.Mode.*;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
+import GameObject.Collectables.Dot;
+import GameObject.Collectables.Fruit;
 import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
 

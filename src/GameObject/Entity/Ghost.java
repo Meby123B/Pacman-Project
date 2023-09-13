@@ -17,7 +17,7 @@ import java.awt.image.BufferedImage;
 
 public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 //    public boolean isEaten=false;
-    boolean getOut= true;
+    boolean getOut= false;
     Mode mode = new NormalMode();
 
 

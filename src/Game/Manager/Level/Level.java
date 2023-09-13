@@ -5,5 +5,6 @@ public interface  Level {
      void handleAiDifficulty(); //todo type?
      double timeForBlueMode();
      double timeForFruit();
+     double amountDotsForReleasingGhost();
 
 }
