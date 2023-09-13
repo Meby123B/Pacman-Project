@@ -11,12 +11,13 @@ package Game;
 
     import java.util.ArrayList;
     import java.util.LinkedList;
+    import java.util.Stack;
 
 public class Controller {
     public static ArrayList<ArrayList<GameObject>> allObjects = new ArrayList<>();
-    public static LinkedList<GameObject> toRemove = new LinkedList<>();
+    public static Stack<GameObject> toRemove = new Stack<>();
     public static LinkedList<Timer> TimerToRemove = new LinkedList<>();
-    private static final Player player = Player.getInstance();
+//    private static final Player player = Player.getInstance();
 
     public static void updateAll(){
         Entity.list.forEach(e -> e.update());
@@ -35,10 +36,10 @@ public class Controller {
 
 
     public static void removeObj(GameObject obj){
-        toRemove.add(obj);
+        toRemove.push(obj);
     }
     public static void removeTimer(Timer timer){
-        TimerToRemove.add(timer);
+        TimerToRemove.push(timer);
     }
 
 

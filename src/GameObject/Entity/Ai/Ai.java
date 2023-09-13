@@ -104,7 +104,7 @@ public abstract class Ai {
         }
         return originalDir;
     }
-    
+
     public double calculateDistance(Ghost ghost, MoveSides dir){
         int x = ghost.getX();
         int y = ghost.getY();
