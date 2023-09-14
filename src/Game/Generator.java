@@ -155,7 +155,7 @@ public class Generator {
         Controller.allObjects.add(Environment.list);
         Controller.allObjects.add(Collectim.list);
         Controller.allObjects.add(Entity.list);
-        new Button(ScreenSettings.width/2, ScreenSettings.height/2, Color.RED); //todo button
+        new Button(ScreenSettings.width/2, ScreenSettings.height/2, "Restart"); //todo button
 //        Controller.allObjects.add(TargetSign.list);//D🪲
     }
 }

@@ -3,6 +3,7 @@ package Game;
 import Game.Manager.GameManager;
 import Game.Manager.Life;
 import Game.Manager.Score;
+import GameObject.GameObject;
 import GameObject.Menues.Menu;
 import GameObject.TargetSign;
 import GameObject.Wall;
@@ -17,7 +18,7 @@ public class Drawer {
         Life.draw(g2);
         GameManager.drawLevel(g2);
 
-        Menu.list.forEach(m -> m.draw(g2));
+        Menu.list.forEach(m -> ((GameObject)m).draw(g2));
 
 //        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
 //        TargetSign.list.forEach(target-> target.draw(g2));

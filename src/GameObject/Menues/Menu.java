@@ -1,10 +1,11 @@
 package GameObject.Menues;
 
 import GameObject.GameObject;
+import GameObject.Clickable;
 
 import java.util.LinkedList;
 
 public class Menu {
-    public static LinkedList<GameObject> list = new LinkedList<>();
+    public static LinkedList<Clickable> list = new LinkedList<>();
 
 }

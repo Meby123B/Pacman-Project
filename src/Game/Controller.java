@@ -56,7 +56,7 @@ public class Controller {
 
 
     public static void resetEntities() {
-        GameLoop.waitFrames(Timer.secondToFrames(2));
+        GameLoop.waitFrames(Timer.secondToFrames(1));
         Entity.list.forEach(obj -> {
             obj.resetPosition();
         });
