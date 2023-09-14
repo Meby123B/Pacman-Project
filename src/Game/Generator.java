@@ -8,6 +8,8 @@ import GameObject.Entity.Player;
 import GameObject.Environment.*;
 import GameObject.Menues.Button;
 
+import java.awt.*;
+
 public class Generator {
     static int ts = ScreenSettings.tileSize;
     static int scrHeight = ScreenSettings.height;
@@ -153,7 +155,7 @@ public class Generator {
         Controller.allObjects.add(Environment.list);
         Controller.allObjects.add(Collectim.list);
         Controller.allObjects.add(Entity.list);
-//        new Button() //todo button
+        new Button(ScreenSettings.width/2, ScreenSettings.height/2, Color.RED); //todo button
 //        Controller.allObjects.add(TargetSign.list);//D🪲
     }
 }

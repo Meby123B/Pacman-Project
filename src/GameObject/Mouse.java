@@ -1,9 +1,11 @@
 package GameObject;
 
 import Game.Collision;
+import Game.Controller;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
 import GameObject.Collectables.Dot;
+import GameObject.Menues.Menu;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -34,8 +36,8 @@ public class Mouse extends GameObject implements MouseListener, MouseMotionListe
         instance.setX(e.getX()-(int)(0.7*ts));
         instance.setY(e.getY()-2*ts);
 
-        Collectim.list.forEach(d -> {
-            if (Collision.check(d,instance)){
+        Menu.list.forEach(d -> {
+            if (Collision.check(d, instance)){
                 ((Clickable)d).whenClicked();
             }
         });
@@ -72,11 +74,11 @@ public class Mouse extends GameObject implements MouseListener, MouseMotionListe
         instance.setX(e.getX()-(int)(0.7*ts));
         instance.setY(e.getY()-2*ts);
 
-        Collectim.list.forEach(d -> {
-            if (Collision.check(d, instance)){
-                ((Clickable)d).whenClicked();
-            }
-        });
+//        Menu.list.forEach(d -> {
+//            if (Collision.check(d, instance)){
+//                ((Clickable)d).whenClicked();
+//            }
+//        });
 
     }
 
