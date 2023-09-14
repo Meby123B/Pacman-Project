@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 public class NormalMode implements Mode{
     @Override
     public int ghostSpeed(Ghost g) {
-        return 2;
+        return 4;
     }
 
     @Override

@@ -3,18 +3,21 @@ package Game;
 import Game.Manager.GameManager;
 import Game.Manager.Life;
 import Game.Manager.Score;
+import GameObject.TargetSign;
 import GameObject.Wall;
 
 import java.awt.*;
 
 public class Drawer {
     public static void drawAll(Graphics2D g2){
-//        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
         Wall.list.forEach(wall ->  wall.draw(g2));
         Controller.allObjects.forEach(list -> list.forEach(obj -> obj.draw(g2)) );
         Score.draw(g2);
         Life.draw(g2);
         GameManager.drawLevel(g2);
+
+//        drawLines(g2);//DEBUG🐞🐞🪲🐜🐛🦗🪳
+//        TargetSign.list.forEach(target-> target.draw(g2));
     }
 
     //DEBUG🐞🐞🪲🐜🐛🦗🪳

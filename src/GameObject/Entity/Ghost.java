@@ -39,11 +39,12 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
 
     @Override
     public void update() {
-        direction = mode.getGhostAi(this).getDirection(this);
-
         if (getOut){
             exit();
+            return;
         }
+        direction = mode.getGhostAi(this).getDirection(this);
+
         move(direction);
     }
     public void collideWithPlayer(Player p){
@@ -77,9 +78,14 @@ public class Ghost extends GameObject.GameObject implements Movable, Eatable {
     public void whenEaten() {
         setDirection(null);
         Score.increase(200);
-        mode = new NormalMode();
-        getOut=true;
+        getOut = true;
         this.resetPosition();
+    }
+
+    @Override
+    public void resetPosition() {
+        super.resetPosition();
+        mode = new NormalMode();
     }
 
     public void exit() {

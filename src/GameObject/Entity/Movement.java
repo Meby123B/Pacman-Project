@@ -54,7 +54,7 @@ public class Movement {
     }
 
     private static void extractSpeedAndDir(GameObject obj){
-        objSpeed = (int)(((Movable)obj).getSpeed()* ScreenSettings.scale);
+        objSpeed = (int)(((Movable)obj).getSpeed());//* ScreenSettings.scale);
         lastDirection = ((Movable)obj).getDirection();
     }
 

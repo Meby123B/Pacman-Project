@@ -15,7 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player extends GameObject implements Movable, Eatable {
-    int speed = 2;
+    int speed = 4;
     MoveSides direction=null;
     static Player instance;
     PlayerAnim anim;
@@ -43,6 +43,10 @@ public class Player extends GameObject implements Movable, Eatable {
         return instance;
     }
     public void checkKeys() {
+
+        if (KeyHandler.enterPressed) {
+            GameManager.restart();
+        }
         if (KeyHandler.upPressed) {
             changeDirection(MoveSides.UP);
 

@@ -6,8 +6,6 @@ import Game.Manager.Level.*;
 import Game.Manager.Mode.*;
 import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
-import GameObject.Collectables.Dot;
-import GameObject.Collectables.Fruit;
 import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
 
@@ -43,6 +41,13 @@ public class GameManager {
             Generator.generateCollectables();
             Controller.resetEntities();
         }
+    }
+    public static void restart(){
+        Score.reset();
+        level = new Level1();
+        Life.reset();
+        Generator.generateCollectables();
+        Controller.resetEntities();
     }
     public static void setBlueMode(){
         Entity.list.forEach(ent -> {

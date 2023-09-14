@@ -39,7 +39,7 @@ public class Timer {
     }
     public void countDown() {
         if (pause) return;
-        System.out.println(count);
+//        System.out.println(count); //D🪲
 
         if (timesUp() && callAtEnd != null) {
             callAtEnd.callBack();

@@ -6,6 +6,7 @@ import GameObject.Entity.Entity;
 import GameObject.Entity.GhostFactory;
 import GameObject.Entity.Player;
 import GameObject.Environment.*;
+import GameObject.Menues.Button;
 
 public class Generator {
     static int ts = ScreenSettings.tileSize;
@@ -79,6 +80,9 @@ public class Generator {
     }
 
     public static void generateCollectables() {
+        if (Collectim.list.size() > 0){
+            Collectim.list.clear();
+        }
 
         new PowerDot(1 * ts, 3 * ts);
         new PowerDot(26 * ts, 3 * ts);
@@ -149,6 +153,7 @@ public class Generator {
         Controller.allObjects.add(Environment.list);
         Controller.allObjects.add(Collectim.list);
         Controller.allObjects.add(Entity.list);
+//        new Button() //todo button
 //        Controller.allObjects.add(TargetSign.list);//D🪲
     }
 }

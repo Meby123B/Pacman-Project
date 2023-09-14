@@ -10,7 +10,7 @@ import GameObject.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Dot extends GameObject implements Collectable, Clickable {
+public class Dot extends GameObject implements Collectable{//, Clickable {
     int value;
     public Dot(int x, int y){
         super(x,y,Color.PINK);
@@ -38,8 +38,8 @@ public class Dot extends GameObject implements Collectable, Clickable {
         Controller.removeObj(this);
     }
 
-    @Override
-    public void whenClicked() {
-        collect();
-    }
+//    @Override
+//    public void whenClicked() {
+//        collect();
+//    }
 }

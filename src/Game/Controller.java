@@ -25,7 +25,7 @@ public class Controller {
     public static void updateAll(){
         Entity.list.forEach(e -> e.update());
         Collision.checkAll();
-        ghostReleaserManager.check();
+        GhostReleaserManager.check();
         GameManager.checkFinishLevel();
 
         Timer.list.forEach(timer -> timer.countDown());
@@ -56,12 +56,11 @@ public class Controller {
 
 
     public static void resetEntities() {
-        GameLoop.waitFrames(180);
+        GameLoop.waitFrames(Timer.secondToFrames(2));
         Entity.list.forEach(obj -> {
             obj.resetPosition();
-            if (obj instanceof Ghost) {
-                ((Ghost) obj).setOut();
-            }
         });
+        GhostReleaserManager.setAllUnrealesde();
+
     }
 }
