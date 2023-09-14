@@ -1,6 +1,8 @@
 package GameObject.Menues;
 
+import Game.GameLoop;
 import Game.Manager.GameManager;
+import Game.Manager.Timer;
 import GameObject.GameObject;
 import GameObject.Clickable;
 
@@ -22,6 +24,8 @@ public class Button extends GameObject implements Clickable {
     @Override
     public void whenClicked() {
         this.color =  new Color(0x141472);
+        //todo export to Inherit object
+        GameLoop.waitFrames(Timer.secondToFrames(0.5));
         GameManager.restart();
         System.out.println("click");
     }

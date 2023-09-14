@@ -2,7 +2,7 @@ package Game;
 
 
 public class GameLoop {
-    static public final int FPS = 30;
+    static public final int FPS = 60;
     static private final double drawInterval = (double) 1000000000 / FPS;
     static private double delta = 0;
     static private long lastTime = System.nanoTime();
@@ -16,10 +16,10 @@ public class GameLoop {
 
     private static void getOnceInFrame(GamePanel gp) {
         if (delta >= 1) {
+                gp.repaint();
             if (waitFor <= 0) {
 
                 gp.update();
-                gp.repaint();
             } else {
                 waitFor--;
             }

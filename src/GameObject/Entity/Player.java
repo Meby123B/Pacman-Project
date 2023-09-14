@@ -15,7 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player extends GameObject implements Movable, Eatable {
-    int speed = 4;
+    int speed = 2;
     MoveSides direction=null;
     static Player instance;
     PlayerAnim anim;
@@ -45,7 +45,8 @@ public class Player extends GameObject implements Movable, Eatable {
     public void checkKeys() {
 
         if (KeyHandler.enterPressed) {
-            GameManager.restart();
+            //todo make pause screen
+            GameManager.setGameover();
         }
         if (KeyHandler.upPressed) {
             changeDirection(MoveSides.UP);
@@ -95,11 +96,12 @@ public class Player extends GameObject implements Movable, Eatable {
     }
 
     private void loseLife(){
-        Life.lose();
+        Life.lose(); //todo move to Life class
         if (Life.getLife() <= 0){gameover();}
     }
     private void gameover(){
-        Controller.removeObj(this);
+//        Controller.removeObj(this);
+        GameManager.setGameover();
         System.out.println("GAME OVER!");
     }
 

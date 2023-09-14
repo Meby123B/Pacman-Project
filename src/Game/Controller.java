@@ -18,11 +18,14 @@ public class Controller {
     public static LinkedList<LinkedList<GameObject>> allObjects = new LinkedList<>();
     public static Stack<GameObject> toRemove = new Stack<>();
     public static Stack<Timer> TimerToRemove = new Stack<>();
-//    private static final Player player = Player.getInstance();
-    static GhostReleaserManager ghostReleaserManager = new GhostReleaserManager();
+//    static GhostReleaserManager ghostReleaserManager = new GhostReleaserManager();
 
 
     public static void updateAll(){
+        if (GameManager.isGameover()){
+            return;
+        }
+
         Entity.list.forEach(e -> e.update());
         Collision.checkAll();
         GhostReleaserManager.check();
@@ -32,7 +35,7 @@ public class Controller {
         FruitGenerator.checkForGenerate();
 
         removeFromStack();
-        toRemove.forEach(obj -> allObjects.forEach(list -> list.remove(obj)));
+//        toRemove.forEach(obj -> allObjects.forEach(list -> list.remove(obj)));
 //        TimerToRemove.forEach(timer -> Timer.list.remove(timer));
 
     }

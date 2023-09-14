@@ -8,11 +8,13 @@ import Game.ScreenSettings;
 import GameObject.Collectables.Collectim;
 import GameObject.Entity.Entity;
 import GameObject.Entity.Ghost;
+import GameObject.Menues.Menu;
 
 import java.awt.*;
 
 public class GameManager {
     private static Level level;
+    private static boolean gameover;
 
     public static void resetPositions(){
         Entity.list.forEach(obj -> obj.resetPosition());
@@ -45,9 +47,11 @@ public class GameManager {
     public static void restart(){
         Score.reset();
         level = new Level1();
+        gameover=false;
         Life.reset();
         Generator.generateCollectables();
         Controller.resetEntities();
+        Menu.list.clear();
     }
     public static void setBlueMode(){
         Entity.list.forEach(ent -> {
@@ -62,6 +66,15 @@ public class GameManager {
                 ((Ghost)ent).setMode(new NormalMode());
             }
         });
+    }
+
+    public static boolean isGameover() {
+        return gameover;
+    }
+
+    public static void setGameover() {
+        Generator.generateResetButton();
+        GameManager.gameover = true;
     }
 
     public static void drawLevel(Graphics2D g2) {

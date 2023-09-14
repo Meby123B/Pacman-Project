@@ -16,7 +16,7 @@ public class Level3 implements Level{
 
     @Override
     public double timeForBlueMode() {
-        return 5.0;
+        return 6.0;
     }
 
     @Override
